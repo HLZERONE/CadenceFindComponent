@@ -1,10 +1,12 @@
 package Cadence;
 
-public class Component {
+public class Component implements Comparable<Component>{
+	int id; //IMPORTANT: NEED TO BE UNIQUE!!
 	int resource; //1 <= R <= 8
 	int density; //1 <= D <= 16
 	
-	public Component(int resource, int density) {
+	public Component(int id, int resource, int density) {
+		this.id = id;
 		this.setResource(resource);
 		this.setDensity(density);
 	}
@@ -40,4 +42,17 @@ public class Component {
 			System.out.println(e);
 		}
 	}
+	
+	@Override
+	public int compareTo(Component otherComponent) {
+		if(this.density != otherComponent.getDensity()) {
+			return -1;
+		}
+		if(this.resource == otherComponent.getResource()) {
+			return -1;
+		}
+		return 0;
+	}
+	
+	
 }
