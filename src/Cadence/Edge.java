@@ -1,6 +1,6 @@
 package Cadence;
 
-public class Edge implements Comparable<Edge>{
+public class Edge{
 	int id; //IMPORTANT: NEED TO BE UNIQUE!!
 	int delay; // 10, 100, 1000
 	Component A; //might be null
@@ -49,17 +49,13 @@ public class Edge implements Comparable<Edge>{
 		}
 	}
 
-	@Override
-	public int compareTo(Edge otherEdge) {
-		if(this.delay != otherEdge.getDelay()) {
-			return -1;
-		}
-		//Check: ComponentA == otherEdge.ComponentA && ComponentB == otherEdge.ComponentB
+	public boolean equals(Edge otherEdge) {
+		//Check: delay == otherEdge.delay AND
+		//	ComponentA == otherEdge.ComponentA && ComponentB == otherEdge.ComponentB
 		//	OR Component == otherEdge.ComponentB && ComponentB == otherEdge.ComponentA
-		if(this.A.compareTo(otherEdge.getComponentA()) + this.B.compareTo(otherEdge.getComponentB()) == 0 ||
-				this.A.compareTo(otherEdge.getComponentB()) + this.B.compareTo(otherEdge.getComponentA()) == 0) {
-			return 0;
-		}
-		return -1;
+		return this.delay == otherEdge.getDelay() && 
+				(A.equals(otherEdge.getComponentA()) && B.equals(otherEdge.getComponentB()) ||
+				A.equals(otherEdge.getComponentB()) && B.equals(otherEdge.getComponentA()));
 	}
+	
 }

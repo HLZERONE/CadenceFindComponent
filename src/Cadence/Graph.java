@@ -29,6 +29,46 @@ public class Graph {
 		return this.edges[index];
 	}
 	
+	//check if there exists same edge in graph
+	public boolean checkSameEdge(Edge checkEdge) {
+		for(Edge e: edges) {
+			if(e.equals(checkEdge)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	//check if there exists same component in graph
+	public boolean checkSameComponent(Component checkComponent) {
+		for(Component c : components) {
+			if(c.equals(checkComponent)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	//return the same edge in graph if exists, or null otherwise
+	public Edge getSameEdge(Edge checkEdge) {
+		for(Edge e: edges) {
+			if(e.equals(checkEdge)) {
+				return e;
+			}
+		}
+		return null;
+	}
+	
+	//return the same component in graph if exists, or null otherwise
+	public Component getSameComponent(Component checkComponent) {
+		for(Component c : components) {
+			if(c.equals(checkComponent)) {
+				return c;
+			}
+		}
+		return null;
+	}
+	
 	public static void main(String[] args) {
 		
 	}
