@@ -8,6 +8,14 @@ public class Graph {
 		this.components = c;
 		this.edges = e;
 	}
+
+	public int numComponents(){
+		return this.components.length;
+	}
+
+	public int numEdges(){
+		return this.edges.length;
+	}
 	
 	//Output: whole Component list
 	public Component[] getComponents() {
