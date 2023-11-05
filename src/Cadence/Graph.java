@@ -1,5 +1,7 @@
 package Cadence;
 
+import java.awt.*;
+
 public class Graph {
 	Component[] components; //each component has Resource and Density attributes
 	Edge[] edges; //each edge has delay, ComponentA, ComponentB attributes
@@ -76,6 +78,13 @@ public class Graph {
 		}
 		return null;
 	}
+	/*
+	public static HashMap<Component, Integer> sameComponentCount(Component[] components){
+		for(Component c: components){
+
+		}
+	}
+	*/
 	
 	public static void main(String[] args) {
 		

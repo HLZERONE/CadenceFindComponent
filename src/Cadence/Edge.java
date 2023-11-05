@@ -11,6 +11,8 @@ public class Edge{
 		this.A = A;
 		this.B = B;
 		this.setDelay(delay);
+		A.addEdge(this);
+		B.addEdge(this);
 	}
 	
 	public int getId() {
@@ -56,6 +58,13 @@ public class Edge{
 		return this.delay == otherEdge.getDelay() && 
 				(A.equals(otherEdge.getComponentA()) && B.equals(otherEdge.getComponentB()) ||
 				A.equals(otherEdge.getComponentB()) && B.equals(otherEdge.getComponentA()));
+	}
+
+	public static void main(String[] args) {
+		Component A = new Component(1, 2, 2);
+		Component B = new Component(2, 2, 2);
+
+		Edge e = new Edge(1, A, B, 10);
 	}
 	
 }

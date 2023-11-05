@@ -1,12 +1,16 @@
 package Cadence;
+import java.util.*;
 
 public class Component{
 	int id; //IMPORTANT: NEED TO BE UNIQUE!!
 	int resource; //1 <= R <= 8
 	int density; //1 <= D <= 16
+
+	List<Edge> edges;
 	
 	public Component(int id, int resource, int density) {
 		this.id = id;
+		this.edges = new ArrayList<>();
 		this.setResource(resource);
 		this.setDensity(density);
 	}
@@ -47,10 +51,15 @@ public class Component{
 	public boolean equals(Component otherComponent) {
 		return this.density == otherComponent.getDensity() && this.resource == otherComponent.getResource();
 	}
+
+	public void addEdge(Edge e){
+		this.edges.add(e);
+	}
 	
 	public static void main(String[] args) {
 		Component A = new Component(1, 2, 2);
 		Component B = new Component(2, 2, 2);
+
 		if(A.equals(B)) {
 			System.out.println("the same");
 		}
