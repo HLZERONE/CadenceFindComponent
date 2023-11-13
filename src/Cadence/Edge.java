@@ -31,6 +31,12 @@ public class Edge{
 		return B;
 	}
 	
+	//get the other one Component
+	public Component getOtherComponent(Component c) {
+		if(c.id == A.id) return B;
+		return A;
+	}
+	
 	public void setComponentA(Component A) {
 		this.A = A;
 	}
@@ -38,6 +44,7 @@ public class Edge{
 	public void setComponentB(Component B) {
 		this.B = B;
 	}
+	
 	
 	public void setDelay(int delay) {
 		try {

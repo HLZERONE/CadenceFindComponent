@@ -49,6 +49,7 @@ public class Component{
 	
 	
 	public boolean equals(Component otherComponent) {
+		//TODO: Check if edges list are equal
 		return this.density == otherComponent.getDensity() && this.resource == otherComponent.getResource();
 	}
 

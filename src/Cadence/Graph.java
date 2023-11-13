@@ -1,14 +1,26 @@
 package Cadence;
 
 import java.awt.*;
-
+import java.util.*;
 public class Graph {
 	Component[] components; //each component has Resource and Density attributes
 	Edge[] edges; //each edge has delay, ComponentA, ComponentB attributes
+	HashMap<Integer, Component> componentHashMap; //id: component
+	HashMap<Integer, Edge> edgeHashMap; //id: edge
 	
 	public Graph(Component[] c, Edge[] e) {
 		this.components = c;
 		this.edges = e;
+		//build component map
+		this.componentHashMap = new HashMap<>();
+		for(Component component: this.components){
+			componentHashMap.put(component.id, component);
+		}
+		//build edge map
+		this.edgeHashMap = new HashMap<>();
+		for(Edge edge: edges){
+			edgeHashMap.put(edge.id, edge);
+		}
 	}
 
 	public int numComponents(){
@@ -23,20 +35,42 @@ public class Graph {
 	public Component[] getComponents() {
 		return this.components;
 	}
+
+	//Output: component map
+	public Map<Integer, Component> getComponentMap() {
+		return this.componentHashMap;
+	}
 	
-	//Output: specific component by index
-	public Component getComponent(int index) {
-		return this.components[index];
+	//Output: specific component by id
+	public Component getComponent(int id) {
+		if(!this.componentHashMap.containsKey(id)) return null;
+		return this.componentHashMap.get(id);
 	}
 	
 	//Output: whole Edge list
 	public Edge[] getEdges() {
 		return this.edges;
 	}
+
+	//Output: Edge Map
+	public Map<Integer, Edge> getEdgesMap() {
+		return this.edgeHashMap;
+	}
 	
-	//Output: specific edge by index
-	public Edge getEdge(int index) {
-		return this.edges[index];
+	//Output: specific edge by id
+	public Edge getEdge(int id) {
+		if(!this.componentHashMap.containsKey(id)) return null;
+		return this.edgeHashMap.get(id);
+	}
+
+	//Output: boolean, check if graph contains edge with this id
+	public boolean checkEdgeById(int id){
+		return this.edgeHashMap.containsKey(id);
+	}
+
+	//Output: boolean, check if graph contains component with this id
+	public boolean checkComponentById(int id){
+		return this.componentHashMap.containsKey(id);
 	}
 	
 	//check if there exists same edge in graph
@@ -78,13 +112,6 @@ public class Graph {
 		}
 		return null;
 	}
-	/*
-	public static HashMap<Component, Integer> sameComponentCount(Component[] components){
-		for(Component c: components){
-
-		}
-	}
-	*/
 	
 	public static void main(String[] args) {
 		
