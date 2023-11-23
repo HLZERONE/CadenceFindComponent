@@ -10,17 +10,23 @@ public class CadenceSolution {
 	c1 is in the big graph, and c2 is in the target graph
 	c1 == c2, and c1 and c2 are the start point of both graph
 	RETURN:
-	AT THIS POINT: RETURN TRUE IF FOUND THE TARGET GRAPH, FALSE OTHERWISE
-	TODO: Instead of return boolean, return a list of edge and component -> graph
+	1.0: AT THIS POINT: RETURN TRUE IF FOUND THE TARGET GRAPH, FALSE OTHERWISE
+	2.0: Instead of return boolean, return graph if exists, null if not found
 	*/
-	public boolean SychronousBFS(Component c1, Component c2){
-		if(c1 == null || c2 == null || !c1.equals(c2)) return false;
+	public Graph SychronousBFS(Component c1, Component c2){
+		if(c1 == null || c2 == null || !c1.equals(c2)) return null;
+		
+		//BUILD GRAPH MATERIAL
+		List<Component> components = new ArrayList<>();
+		List<Edge> edges = new ArrayList<>();
+		
 		//C1 graph
 		Set<Integer> visitedComponent_1 = new HashSet<>(); //store unique ID for components
         Set<Integer> visitedEdge_1 = new HashSet<>(); //store unique ID for edges
         Queue<Component> levels_1 = new LinkedList<>();
         visitedComponent_1.add(c1.id);
         levels_1.add(c1);
+        components.add(c1);
         
         //C2 graph
         Set<Integer> visitedComponent_2 = new HashSet<>(); //store unique ID for components
@@ -42,31 +48,41 @@ public class CadenceSolution {
         		//not visited the component yet
         		
         		//1. check if componentOne contains the same otherEnd Component
-        		Component otherEndOne = findOtherSideComponent(componentOne, otherEndTwo, visitedEdge_1, visitedComponent_1);
-        		if(otherEndOne == null) return false;
+        		Edge sameEdge = findSameEdge(componentOne, e, visitedEdge_1, visitedComponent_1);
+        		if(sameEdge == null) return null;
+        		Component otherEndOne = sameEdge.getOtherComponent(componentOne);
         		
-        		//2. add to queue to traverse
+        		//2. Add to build graph
+        		components.add(otherEndOne);
+        		edges.add(sameEdge);
+        		
+        		//3. add to queue to traverse
+        		visitedComponent_1.add(otherEndTwo.id);
+        		visitedEdge_1.add(sameEdge.id);
         		levels_1.add(otherEndOne);
+        		
         		visitedComponent_2.add(otherEndTwo.id);
         		levels_2.add(otherEndTwo);
         	}
         }
         
+        if(!levels_1.isEmpty() || !levels_2.isEmpty()) {
+        	return null;
+        }
         
-        return levels_1.isEmpty() && levels_2.isEmpty();
+        Component[] graphC = components.toArray(new Component[components.size()]);
+        Edge[] graphE = components.toArray(new Edge[edges.size()]);
+        
+        return new Graph(graphC, graphE);
 	}
 	
 	
-	//Find otherSide Component that not been visited before (FOR SychronousBFS()) and add that edge and component id to set
-	private Component findOtherSideComponent(Component InputComponent, Component targetComponent, Set<Integer> visitedEdge, Set<Integer> visitedComponent) {
+	//Find the not visited edge that connecting to this component and the not visited target component(FOR SychronousBFS())
+	private Edge findSameEdge(Component InputComponent, Edge targetEdge, Set<Integer> visitedEdge, Set<Integer> visitedComponent) {
 		for(Edge e: InputComponent.edges) {
-			if(visitedEdge.contains(e.id)) continue;
-			
-			Component otherSide = e.getOtherComponent(InputComponent);
-			if(otherSide.equals(targetComponent) && !visitedComponent.contains(otherSide.id)){
-				visitedEdge.add(e.id);
-				visitedComponent.add(otherSide.id);
-				return otherSide;
+			//not visited, same edge, with not visited other side component
+			if(!visitedEdge.contains(e.id) && e.equals(targetEdge) && !visitedComponent.contains(e.getOtherComponent(InputComponent).id)){
+				return e;
 			}
 		}
 		return null;
