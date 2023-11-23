@@ -60,9 +60,8 @@ public class Component{
 	public static void main(String[] args) {
 		Component A = new Component(1, 2, 2);
 		Component B = new Component(2, 2, 2);
-
-		if(A.equals(B)) {
-			System.out.println("the same");
-		}
+		Set<Component> testSet = new HashSet<>();
+		testSet.add(A);
+		System.out.println(testSet.contains(A));
 	}
 }
