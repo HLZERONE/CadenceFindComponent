@@ -4,8 +4,25 @@ import java.util.*;
 
 public class CadenceSolution {
 	//TODO: Function that find the target start component in Big Graph, once found, call SychronousBFS
-	
-	/*
+	private List<Graph> findAllGraph(Graph searchGraph, Graph targetGraph){
+		//edge cases
+		if(searchGraph == null || targetGraph == null || targetGraph.components.length == 0) return new ArrayList<>();
+		
+		List<Graph> allTarget = new ArrayList<>();
+		Component beginComponent = targetGraph.components[0];
+		
+		for(Component c: searchGraph.components) {
+			if(c.equals(beginComponent)) {
+				Graph loopGraph = SychronousBFS(c, beginComponent);
+				if(loopGraph != null) {//found
+					allTarget.add(loopGraph);
+				}
+			}
+		}
+		
+		return allTarget;
+	}
+	/* 
 	INPUT: 
 	c1 is in the big graph, and c2 is in the target graph
 	c1 == c2, and c1 and c2 are the start point of both graph
