@@ -1,10 +1,12 @@
 package Cadence;
 
 import java.util.*;
+import Cadence.GenerateRandom;
+import Cadence.GraphVisualization;
 
 public class CadenceSolution {
 	//TODO: Function that find the target start component in Big Graph, once found, call SychronousBFS
-	private List<Graph> findAllGraph(Graph searchGraph, Graph targetGraph){
+	public static List<Graph> findAllGraph(Graph searchGraph, Graph targetGraph){
 		//edge cases
 		if(searchGraph == null || targetGraph == null || targetGraph.components.length == 0) return new ArrayList<>();
 		
@@ -30,7 +32,7 @@ public class CadenceSolution {
 	1.0: AT THIS POINT: RETURN TRUE IF FOUND THE TARGET GRAPH, FALSE OTHERWISE
 	2.0: Instead of return boolean, return graph if exists, null if not found
 	*/
-	public Graph SychronousBFS(Component c1, Component c2){
+	private static Graph SychronousBFS(Component c1, Component c2){
 		if(c1 == null || c2 == null || !c1.equals(c2)) return null;
 		
 		//BUILD GRAPH MATERIAL
@@ -88,14 +90,14 @@ public class CadenceSolution {
         }
         
         Component[] graphC = components.toArray(new Component[components.size()]);
-        Edge[] graphE = components.toArray(new Edge[edges.size()]);
+        Edge[] graphE = edges.toArray(new Edge[edges.size()]);
         
         return new Graph(graphC, graphE);
 	}
 	
 	
 	//Find the not visited edge that connecting to this component and the not visited target component(FOR SychronousBFS())
-	private Edge findSameEdge(Component InputComponent, Edge targetEdge, Set<Integer> visitedEdge, Set<Integer> visitedComponent) {
+	private static Edge findSameEdge(Component InputComponent, Edge targetEdge, Set<Integer> visitedEdge, Set<Integer> visitedComponent) {
 		for(Edge e: InputComponent.edges) {
 			//not visited, same edge, with not visited other side component
 			if(!visitedEdge.contains(e.id) && e.equals(targetEdge) && !visitedComponent.contains(e.getOtherComponent(InputComponent).id)){
@@ -139,6 +141,33 @@ public class CadenceSolution {
         return true;
     }
     
+    public static void main(String[] args) {
+    	Result AResult = GenerateRandom.generateRandomGraph(5, 4);
+    	Graph AGraph = AResult.getGraph();
+    	//build small graph
+    	Edge randomEdge = AGraph.getEdge(0).clone(); //select an edge to copy
+    	Edge[] smallEdges = new Edge[] {randomEdge};
+    	Component[] smallComponents = new Component[] {randomEdge.getComponentA(), randomEdge.getComponentB()};
+    	Graph smallGraph = new Graph(smallComponents, smallEdges);
+    	
+    	//find the graph
+    	List<Graph> matcher = findAllGraph(AGraph, smallGraph);
+    	for(Graph g: matcher) {
+    		Graph.printGraph(g);
+    		System.out.println("----");
+    	}
+    	Graph.printGraph(smallGraph);
+    	System.out.println("----");
+    	
+    	//try not match graph
+    	Result BResult = GenerateRandom.generateRandomGraph(3, 2);
+    	Graph BGraph = BResult.getGraph();
+    	List<Graph> ABmatcher = findAllGraph(AGraph, BGraph);
+    	System.out.println(ABmatcher.size()); //should be zero
+    	Graph.printGraph(AGraph);
+    	System.out.println("----");
+    	Graph.printGraph(BGraph);
+    }
     
     
 }

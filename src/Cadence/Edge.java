@@ -66,6 +66,11 @@ public class Edge{
 				(A.equals(otherEdge.getComponentA()) && B.equals(otherEdge.getComponentB()) ||
 				A.equals(otherEdge.getComponentB()) && B.equals(otherEdge.getComponentA()));
 	}
+	
+	//clone the current edge
+	public Edge clone() {
+		return new Edge(this.id, this.A.clone(), this.B.clone(), this.delay);
+	}
 
 	public static void main(String[] args) {
 		Component A = new Component(1, 2, 2);

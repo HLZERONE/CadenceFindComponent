@@ -57,6 +57,11 @@ public class Component{
 		this.edges.add(e);
 	}
 	
+	//clone current component
+	public Component clone() {
+		return new Component(this.id, this.resource, this.density);
+	}
+	
 	public static void main(String[] args) {
 		Component A = new Component(1, 2, 2);
 		Component B = new Component(2, 2, 2);

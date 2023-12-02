@@ -113,6 +113,15 @@ public class Graph {
 		return null;
 	}
 	
+	//print out the graph val
+	public static void printGraph(Graph g) {
+		for(Edge e: g.edges) {
+			System.out.println("Edge ID: " + e.id + " Delay: " + e.delay);
+			System.out.println("	Component" + e.getComponentA().id  + " density: " + e.getComponentA().density + " resource: " + e.getComponentA().resource);
+			System.out.println("	Component" + e.getComponentB().id  + " density: " + e.getComponentB().density + " resource: " + e.getComponentB().resource);
+		}
+	}
+	
 	public static void main(String[] args) {
 		
 	}
