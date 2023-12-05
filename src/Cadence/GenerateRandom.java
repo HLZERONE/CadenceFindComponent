@@ -1,33 +1,15 @@
 package Cadence;
 import java.util.*;
 
-class Result {
-    // helper class to encapsulate a Graph object and a 2D int array to represent its connections
-    // the 2D int array will be helpful in visualizing the graph in GraphVisualization.java
-    private Graph graph;
-    private int[][] connection2DArray;
-    public Result(Graph g, int[][] a){
-        this.graph = g;
-        this.connection2DArray = a;
-    }
 
-    public Graph getGraph() {
-        return graph;
-    }
-
-    public int[][] getConnection2DArray() {
-        return connection2DArray;
-    }
-
-}
 public class GenerateRandom {
     // For a connected graph, the number of edges depends on the number of components
     // the number of edges should be within the range of n-1 to n(n-1)/2, where n is the number of components
+    // the Result class in this java file is useless now, made separate function to capture 2D connections
     // example:
-    // Result r = GenerateRandom.generateRandomGraph(5, 5);
-    // Graph g = r.getGraph();
-    // int[][] c = r.getConnection2DArray();
-    public static Result generateRandomGraph(int numOfComponents, int numOfEdges){
+    // Graph g = GenerateRandom.generateRandomGraph(5, 4);
+    // - generating a random graph with 5 vertices and 4 edges
+    public static Graph generateRandomGraph(int numOfComponents, int numOfEdges){
         try {
             if((numOfEdges > numOfComponents*(numOfComponents-1)/2) || numOfEdges < numOfComponents-1) {
                 throw new Exception("the number of edges depends on the number of vertices \n" +
@@ -102,12 +84,16 @@ public class GenerateRandom {
 
         }
 
-        Graph returnGraph = new Graph(components, edges);
-        return new Result(returnGraph, connection2DArray);
+        return new Graph(components, edges);
+        //return new Result(returnGraph, connection2DArray);
     }
 
-    //Warning!!! incomplete generateRandomSubgraph
-    public static Graph generateRandomSubgraph(Graph systemGraph, boolean[][] connections, int componentNumber){
+    public static Graph generateRandomSubgraph(Graph systemGraph, int componentNumber, int edgeNumber){
+        //tries its best to meet the specified number of components and edges in the argument,
+        //but if the random starting vertex fails to locate such a subgraph, it will return the closest subgraph.
+        //example:
+        // Graph bigGraph = GenerateRandom.generateRandomGraph(5, 4);
+        // Graph subGraph = GenerateRandom.generateRandomSubgraph(bigGraph, 3, 2)
         try {
             if(componentNumber > systemGraph.numComponents()) {
                 throw new Exception("too many components, should be less than: " + systemGraph.numEdges());
@@ -117,47 +103,115 @@ public class GenerateRandom {
             System.out.println(e);
         }
 
-        Component[] components = new Component[componentNumber];
-        Edge[] edges = new Edge[systemGraph.numEdges()];
+        ArrayList<Component> components = new ArrayList<>();
+        ArrayList<Edge> edges = new ArrayList<>();
+        ArrayList<Integer> edgeConnection = new ArrayList<Integer>();
+        HashSet<Integer> availableEdgeIDs = new HashSet<>();
 
         HashSet<Integer> visitedComponents = new HashSet<>();
         HashSet<Integer> visitedEdges = new HashSet<>();
 
         Random random = new Random();
         int currentComponentIndex = random.nextInt(systemGraph.numComponents());
-        Component currentComponent = systemGraph.getComponent(currentComponentIndex);
-        visitedComponents.add(currentComponent.id);
+        Component startComponent = systemGraph.getComponent(currentComponentIndex);
+        visitedComponents.add(startComponent.id);
 
         int currentSubgraphComponents = 0;
-        components[currentSubgraphComponents] = new Component(currentSubgraphComponents, currentComponent.resource, currentComponent.density);
+        int currentSubgraphEdges = 0;
+
+        Component currentComponent = new Component(startComponent.id, startComponent.resource, startComponent.density);
+        components.add(currentComponent);
         currentSubgraphComponents += 1;
 
-        while (currentSubgraphComponents != componentNumber){
-            int randomEdgeIndex = random.nextInt(systemGraph.components[currentComponentIndex].edges.size());
-            Edge randomEdge = systemGraph.components[currentComponentIndex].edges.get(randomEdgeIndex);
-            Component nextComponent = randomEdge.getOtherComponent(currentComponent);
-
-
-            currentSubgraphComponents += 1;
-
+        for (Edge e : startComponent.edges){
+            availableEdgeIDs.add(e.getId());
         }
 
-        return null;
+        while (currentSubgraphComponents != componentNumber && !availableEdgeIDs.isEmpty()){
+            int randomEdgeIndex = random.nextInt(availableEdgeIDs.size());
+            Iterator<Integer> it = availableEdgeIDs.iterator();
+            for (int i = 0; i < randomEdgeIndex; i++){
+                it.next();
+            }
+            Edge randomEdge = systemGraph.getEdge(it.next());
+            if (visitedComponents.contains(randomEdge.getComponentA().id)){
+                for (Edge e : randomEdge.getComponentB().edges){
+                    availableEdgeIDs.add(e.getId());
+                }
+                Component newComponent = new Component(randomEdge.getComponentB().id, randomEdge.getComponentB().getResource(), randomEdge.getComponentB().getDensity());
+                components.add(newComponent);
+                visitedComponents.add(randomEdge.getComponentB().id);
+                Edge newEdge;
+                for (Component c : components){
+                    if (c.id == randomEdge.getComponentA().id){
+                        newEdge = new Edge(randomEdge.id, c, newComponent, randomEdge.delay);
+                        edges.add(newEdge);
+                        break;
+                    }
+                }
+            }
+            else{
+                for (Edge e : randomEdge.getComponentA().edges){
+                    availableEdgeIDs.add(e.getId());
+                }
+                Component newComponent = new Component(randomEdge.getComponentA().id, randomEdge.getComponentA().getResource(), randomEdge.getComponentA().getDensity());
+                components.add(newComponent);
+                visitedComponents.add(randomEdge.getComponentA().id);
+                Edge newEdge;
+                for (Component c : components){
+                    if (c.id == randomEdge.getComponentB().id){
+                        newEdge = new Edge(randomEdge.id, c, newComponent, randomEdge.delay);
+                        edges.add(newEdge);
+                        break;
+                    }
+                }
+
+            }
+            currentSubgraphComponents += 1;
+            currentSubgraphEdges += 1;
+            Integer toRemove = randomEdge.id;
+            availableEdgeIDs.remove(toRemove);
+        }
+
+        Component[] c = components.toArray(new Component[0]);
+        Edge[] e = edges.toArray(new Edge[0]);
+        return new Graph(c, e);
     }
 
     public static void main(String[] args) {
         // generates a fully connected graph with 5 vertices
-        Result r = generateRandomGraph(5, 9);
-        Graph g = r.getGraph();
-        System.out.println(g.components.length);
+        get2Dconnection get = new get2Dconnection();
+
+        Graph g = GenerateRandom.generateRandomGraph(5, 4);
+        System.out.println("number of components: " + g.components.length);
         for(int i = 0; i < g.components.length; i++){
             List<Edge> e = g.components[i].edges;
             System.out.println(e);
         }
-        System.out.println(g.edges.length);
-        for (int i = 0; i < r.getConnection2DArray().length; i++) {
-            for (int j = 0; j < r.getConnection2DArray()[i].length; j++) {
-                System.out.print(r.getConnection2DArray()[i][j] + " ");
+        System.out.println("number of edges: " + g.edges.length);
+        int[][] r = get.getConnection(g);
+        for (int i = 0; i < r.length; i++) {
+            for (int j = 0; j < r[i].length; j++) {
+                System.out.print(r[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+
+        int[][] testConnection = get.getConnection(g);
+        for (int i = 0; i < testConnection.length; i++) {
+            for (int j = 0; j < testConnection[i].length; j++) {
+                System.out.print(testConnection[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("test subgraph generation");
+        int[][] array = get.getConnection(GenerateRandom.generateRandomSubgraph(g, 3, 2));
+        for (int[] row : array) {
+            for (int element : row) {
+                System.out.print(element + " ");
             }
             System.out.println();
         }
