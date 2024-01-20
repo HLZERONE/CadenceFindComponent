@@ -3,10 +3,10 @@ package Cadence;
 import java.awt.*;
 import java.util.*;
 public class Graph {
-	Component[] components; //each component has Resource and Density attributes
-	Edge[] edges; //each edge has delay, ComponentA, ComponentB attributes
-	HashMap<Integer, Component> componentHashMap; //id: component
-	HashMap<Integer, Edge> edgeHashMap; //id: edge
+	final Component[] components; //each component has Resource and Density attributes
+	final Edge[] edges; //each edge has delay, ComponentA, ComponentB attributes
+	final HashMap<Integer, Component> componentHashMap; //id: component
+	final HashMap<Integer, Edge> edgeHashMap; //id: edge
 	
 	public Graph(Component[] c, Edge[] e) {
 		this.components = c;
@@ -112,6 +112,8 @@ public class Graph {
 		}
 		return null;
 	}
+	
+	//TODO: EQUALS FUNCTION FOR GRAPH
 	
 	//print out the graph val
 	public static void printGraph(Graph g) {

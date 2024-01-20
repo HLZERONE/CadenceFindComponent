@@ -134,6 +134,7 @@ public class GenerateRandom {
                 it.next();
             }
             Edge randomEdge = systemGraph.getEdge(it.next());
+            
             if (visitedComponents.contains(randomEdge.getComponentA().id)){
                 for (Edge e : randomEdge.getComponentB().edges){
                     availableEdgeIDs.add(e.getId());
