@@ -14,7 +14,7 @@ public class GraphBuilder {
                         while ((line = reader.readLine()) != null) {
                                 String[] tokens = line.split(",");
 
-                                if (tokens[0].equals("Component")) {
+                                if (tokens[0].equals("c")) {
                                         // Parse component attributes
                                         int id = Integer.parseInt(tokens[1]);
                                         int resource = Integer.parseInt(tokens[2]);
@@ -22,12 +22,12 @@ public class GraphBuilder {
                                         Component component = new Component(id, resource, density);
                                         componentList.add(component);
                                         componentMap.put(id, component);
-                                } else if (tokens[0].equals("Edge")) {
+                                } else if (tokens[0].equals("e")) {
                                         // Parse edge attributes
                                         int id = Integer.parseInt(tokens[1]);
-                                        int delay = Integer.parseInt(tokens[2]);
-                                        int componentAId = Integer.parseInt(tokens[3]);
-                                        int componentBId = Integer.parseInt(tokens[4]);
+                                        int componentAId = Integer.parseInt(tokens[2]);
+                                        int componentBId = Integer.parseInt(tokens[3]);
+                                        int delay = Integer.parseInt(tokens[4]);
                                         Component componentA = componentMap.get(componentAId);
                                         Component componentB = componentMap.get(componentBId);
                                         Edge edge = new Edge(id, componentA, componentB, delay);
@@ -43,7 +43,7 @@ public class GraphBuilder {
         }
 
         public static void main(String[] args) {
-                try {
+                try {                       
                         Graph graph = buildGraphFromFile("input.txt");
                         Graph.printGraph(graph);
                 } catch (IOException e) {
