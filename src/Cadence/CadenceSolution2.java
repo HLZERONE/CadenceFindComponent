@@ -7,6 +7,8 @@ import Cadence.GraphVisualization;
 public class CadenceSolution2 {
 	
 	List<Graph> allTarget = new ArrayList<>();
+	Set<Component> startComponent = new HashSet<>();
+	Component beginComponent;
 	
 	//TODO: Function that find the target start component in Big Graph, once found, call SychronousBFS
 	public List<Graph> findAllGraph(Graph searchGraph, Graph targetGraph){
@@ -15,10 +17,11 @@ public class CadenceSolution2 {
 		
 		
 		this.allTarget = new ArrayList<>();
-		Component beginComponent = targetGraph.components[0];
+		this.startComponent = new HashSet<>();
+		this.beginComponent = targetGraph.components[0];
 		
 		for(Component c: searchGraph.components) {
-			if(c.equals(beginComponent)) {
+			if(c.equals(beginComponent) && !startComponent.contains(c)) {
 				SychronousBFS(c, beginComponent, new State());
 			}
 		}
@@ -42,6 +45,7 @@ public class CadenceSolution2 {
         	Component[] nextC = levels.poll();
         	Component componentOne = nextC[0];
         	Component componentTwo = nextC[1];
+        	if(componentOne.equals(beginComponent)) startComponent.add(c);
         	
         	for(Edge e: componentTwo.edges) {
         		if(s.visitedEdge_2.contains(e.id)) continue; //edge has been visited before
@@ -83,7 +87,7 @@ public class CadenceSolution2 {
 	
 
     // Helper class to represent the current state of exploration
-    class State {
+    private class State {
         List<Component> components;
         List<Edge> edges;
         Set<Integer> visitedComponent_1;
