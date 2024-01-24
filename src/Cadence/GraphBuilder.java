@@ -1,4 +1,5 @@
 package Cadence;
+
 import java.util.*;
 import java.io.*;
 
@@ -43,11 +44,58 @@ public class GraphBuilder {
         }
 
         public static void main(String[] args) {
-                try {                       
-                        Graph graph = buildGraphFromFile("input.txt");
-                        Graph.printGraph(graph);
+                try {
+                        Graph mainGraph = buildGraphFromFile("mainGraph.txt");
+                        Graph subGraph = buildGraphFromFile("subGraph.txt");
+
+                        System.out.println(subGraph.edges.length);
+                        List<Graph> matcher = CadenceSolution.findAllGraph(mainGraph, subGraph);
+                        System.out.println(matcher.size());
+                        for (Graph g : matcher) {
+                                System.out.println(g.edges.length);
+                                Graph.printGraph(g);
+                                System.out.println("----");
+                        }
+                        
+                        // Get2Dconnection get = new Get2Dconnection();
+
+                        // Graph g = GenerateRandom.generateRandomGraph(5, 4);
+                        // System.out.println("number of components: " + g.components.length);
+                        // for (int i = 0; i < g.components.length; i++) {
+                        //         List<Edge> e = g.components[i].edges;
+                        //         System.out.println(e);
+                        // }
+                        // System.out.println("number of edges: " + g.edges.length);
+                        // int[][] r = get.getConnection(g);
+                        // for (int i = 0; i < r.length; i++) {
+                        //         for (int j = 0; j < r[i].length; j++) {
+                        //                 System.out.print(r[i][j] + " ");
+                        //         }
+                        //         System.out.println();
+                        // }
+
+                        // System.out.println();
+
+                        // int[][] testConnection = get.getConnection(g);
+                        // for (int i = 0; i < testConnection.length; i++) {
+                        //         for (int j = 0; j < testConnection[i].length; j++) {
+                        //                 System.out.print(testConnection[i][j] + " ");
+                        //         }
+                        //         System.out.println();
+                        // }
+
+                        // System.out.println("test subgraph generation");
+                        // int[][] array = get.getConnection(GenerateRandom.generateRandomSubgraph(g, 3, 2));
+                        // for (int[] row : array) {
+                        //         for (int element : row) {
+                        //                 System.out.print(element + " ");
+                        //         }
+                        //         System.out.println();
+                        // }
+
                 } catch (IOException e) {
                         System.out.println(e);
                 }
+
         }
 }
