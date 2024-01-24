@@ -222,7 +222,7 @@ public class CadenceSolution {
     
     public static void main(String[] args) {
     	Graph AGraph = GenerateRandom.generateRandomGraph(400, 399);
-    	Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, 20, 19);
+    	Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, 3, 2);
     	System.out.println(Asmall.edges.length);
    
     	List<Graph> matcher = findAllGraph(AGraph, Asmall);
@@ -230,7 +230,9 @@ public class CadenceSolution {
     	for(Graph g: matcher) {
     		System.out.println(g.edges.length);
     		Graph.printGraph(g);
+    		
     		System.out.println("----");
+    		Graph.printGraph(Asmall);
     	}
     	/*
     	//build small graph
