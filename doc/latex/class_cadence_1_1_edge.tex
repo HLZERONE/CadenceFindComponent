@@ -1,0 +1,204 @@
+\doxysection{Cadence.\+Edge Class Reference}
+\hypertarget{class_cadence_1_1_edge}{}\label{class_cadence_1_1_edge}\index{Cadence.Edge@{Cadence.Edge}}
+
+
+Represents an edge in a graph connecting two components.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cadence_1_1_edge_a7e79f86b345254a2ba8c8b74c26435e1}{Edge}} (int id, \mbox{\hyperlink{class_cadence_1_1_component}{Component}} A, \mbox{\hyperlink{class_cadence_1_1_component}{Component}} B, int delay)
+\item 
+int \mbox{\hyperlink{class_cadence_1_1_edge_a6a138a8cb10b3038a75a773b2497c45e}{get\+Id}} ()
+\item 
+int \mbox{\hyperlink{class_cadence_1_1_edge_a95193e491e1e3b5a16d04b63b76c945a}{get\+Delay}} ()
+\item 
+\mbox{\hyperlink{class_cadence_1_1_component}{Component}} \mbox{\hyperlink{class_cadence_1_1_edge_a36d3408b07ab1e1a925ad245e0c56f8e}{get\+ComponentA}} ()
+\item 
+\mbox{\hyperlink{class_cadence_1_1_component}{Component}} \mbox{\hyperlink{class_cadence_1_1_edge_aa01fe0d5fda944021674ef9d42c8c358}{get\+ComponentB}} ()
+\item 
+\mbox{\hyperlink{class_cadence_1_1_component}{Component}} \mbox{\hyperlink{class_cadence_1_1_edge_ae9ecc8c575aa9e305859df8a464abb62}{get\+Other\+Component}} (\mbox{\hyperlink{class_cadence_1_1_component}{Component}} c)
+\item 
+void \mbox{\hyperlink{class_cadence_1_1_edge_a37be2a0d6b5f99218ff2da016d2c1504}{set\+ComponentA}} (\mbox{\hyperlink{class_cadence_1_1_component}{Component}} A)
+\item 
+void \mbox{\hyperlink{class_cadence_1_1_edge_a9122674c9700c32473e92e65fa4b4159}{set\+ComponentB}} (\mbox{\hyperlink{class_cadence_1_1_component}{Component}} B)
+\item 
+void \mbox{\hyperlink{class_cadence_1_1_edge_a611f228a9e270f8837a2df422ad2bc0b}{set\+Delay}} (int delay)
+\item 
+boolean \mbox{\hyperlink{class_cadence_1_1_edge_a4d0e37b196dec38c79681fe53331a11d}{equals}} (\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} other\+Edge)
+\item 
+\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} \mbox{\hyperlink{class_cadence_1_1_edge_a5620798a25e34babb90e54f39d619776}{clone}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_cadence_1_1_edge_a7ea04119c19c9e65f1161e9cbaa68262}\label{class_cadence_1_1_edge_a7ea04119c19c9e65f1161e9cbaa68262} 
+static void {\bfseries main} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an edge in a graph connecting two components. 
+
+\begin{DoxyVerb}   This class models an edge in a graph connecting two components. Each
+   edge has a unique id, delay, and references to two components (A and
+   B).
+   Delay values are limited to [10, 100, 1000].
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_cadence_1_1_edge_a7e79f86b345254a2ba8c8b74c26435e1}\label{class_cadence_1_1_edge_a7e79f86b345254a2ba8c8b74c26435e1} 
+\index{Cadence.Edge@{Cadence.Edge}!Edge@{Edge}}
+\index{Edge@{Edge}!Cadence.Edge@{Cadence.Edge}}
+\doxysubsubsection{\texorpdfstring{Edge()}{Edge()}}
+{\footnotesize\ttfamily Cadence.\+Edge.\+Edge (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{\mbox{\hyperlink{class_cadence_1_1_component}{Component}}}]{A,  }\item[{\mbox{\hyperlink{class_cadence_1_1_component}{Component}}}]{B,  }\item[{int}]{delay }\end{DoxyParamCaption})}
+
+Constructs an edge with the specified id, components, and delay.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Unique id of the edge. \\
+\hline
+{\em A} & The first component connected by this edge. \\
+\hline
+{\em B} & The second component connected by this edge. \\
+\hline
+{\em delay} & The delay value of the edge (10, 100, 1000). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cadence_1_1_edge_a5620798a25e34babb90e54f39d619776}\label{class_cadence_1_1_edge_a5620798a25e34babb90e54f39d619776} 
+\index{Cadence.Edge@{Cadence.Edge}!clone@{clone}}
+\index{clone@{clone}!Cadence.Edge@{Cadence.Edge}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} Cadence.\+Edge.\+clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clones the current edge.
+
+\begin{DoxyReturn}{Returns}
+A new edge with the same id, connected components, and delay. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_edge_a4d0e37b196dec38c79681fe53331a11d}\label{class_cadence_1_1_edge_a4d0e37b196dec38c79681fe53331a11d} 
+\index{Cadence.Edge@{Cadence.Edge}!equals@{equals}}
+\index{equals@{equals}!Cadence.Edge@{Cadence.Edge}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}}
+{\footnotesize\ttfamily boolean Cadence.\+Edge.\+equals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}}}]{other\+Edge }\end{DoxyParamCaption})}
+
+Check if two edges are equal based on their delay and connected components.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other\+Edge} & The edge to compare to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the edges are equal, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_edge_a36d3408b07ab1e1a925ad245e0c56f8e}\label{class_cadence_1_1_edge_a36d3408b07ab1e1a925ad245e0c56f8e} 
+\index{Cadence.Edge@{Cadence.Edge}!getComponentA@{getComponentA}}
+\index{getComponentA@{getComponentA}!Cadence.Edge@{Cadence.Edge}}
+\doxysubsubsection{\texorpdfstring{getComponentA()}{getComponentA()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cadence_1_1_component}{Component}} Cadence.\+Edge.\+get\+ComponentA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the first component connected by this edge.
+
+\begin{DoxyReturn}{Returns}
+The first component connected by this edge. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_edge_aa01fe0d5fda944021674ef9d42c8c358}\label{class_cadence_1_1_edge_aa01fe0d5fda944021674ef9d42c8c358} 
+\index{Cadence.Edge@{Cadence.Edge}!getComponentB@{getComponentB}}
+\index{getComponentB@{getComponentB}!Cadence.Edge@{Cadence.Edge}}
+\doxysubsubsection{\texorpdfstring{getComponentB()}{getComponentB()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cadence_1_1_component}{Component}} Cadence.\+Edge.\+get\+ComponentB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the second component connected by this edge.
+
+\begin{DoxyReturn}{Returns}
+The second component connected by this edge. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_edge_a95193e491e1e3b5a16d04b63b76c945a}\label{class_cadence_1_1_edge_a95193e491e1e3b5a16d04b63b76c945a} 
+\index{Cadence.Edge@{Cadence.Edge}!getDelay@{getDelay}}
+\index{getDelay@{getDelay}!Cadence.Edge@{Cadence.Edge}}
+\doxysubsubsection{\texorpdfstring{getDelay()}{getDelay()}}
+{\footnotesize\ttfamily int Cadence.\+Edge.\+get\+Delay (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the delay value of the edge.
+
+\begin{DoxyReturn}{Returns}
+The delay value of the edge (10, 100, 1000). 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_edge_a6a138a8cb10b3038a75a773b2497c45e}\label{class_cadence_1_1_edge_a6a138a8cb10b3038a75a773b2497c45e} 
+\index{Cadence.Edge@{Cadence.Edge}!getId@{getId}}
+\index{getId@{getId}!Cadence.Edge@{Cadence.Edge}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int Cadence.\+Edge.\+get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the unique id of the edge.
+
+\begin{DoxyReturn}{Returns}
+The unique id of the edge. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_edge_ae9ecc8c575aa9e305859df8a464abb62}\label{class_cadence_1_1_edge_ae9ecc8c575aa9e305859df8a464abb62} 
+\index{Cadence.Edge@{Cadence.Edge}!getOtherComponent@{getOtherComponent}}
+\index{getOtherComponent@{getOtherComponent}!Cadence.Edge@{Cadence.Edge}}
+\doxysubsubsection{\texorpdfstring{getOtherComponent()}{getOtherComponent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cadence_1_1_component}{Component}} Cadence.\+Edge.\+get\+Other\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_component}{Component}}}]{c }\end{DoxyParamCaption})}
+
+Get the other component connected to a given component by this edge.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The component whose neighbor you want to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The other component connected to the given component by this edge. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_edge_a37be2a0d6b5f99218ff2da016d2c1504}\label{class_cadence_1_1_edge_a37be2a0d6b5f99218ff2da016d2c1504} 
+\index{Cadence.Edge@{Cadence.Edge}!setComponentA@{setComponentA}}
+\index{setComponentA@{setComponentA}!Cadence.Edge@{Cadence.Edge}}
+\doxysubsubsection{\texorpdfstring{setComponentA()}{setComponentA()}}
+{\footnotesize\ttfamily void Cadence.\+Edge.\+set\+ComponentA (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_component}{Component}}}]{A }\end{DoxyParamCaption})}
+
+Set the first component connected by this edge.
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The new first component connected by this edge. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_cadence_1_1_edge_a9122674c9700c32473e92e65fa4b4159}\label{class_cadence_1_1_edge_a9122674c9700c32473e92e65fa4b4159} 
+\index{Cadence.Edge@{Cadence.Edge}!setComponentB@{setComponentB}}
+\index{setComponentB@{setComponentB}!Cadence.Edge@{Cadence.Edge}}
+\doxysubsubsection{\texorpdfstring{setComponentB()}{setComponentB()}}
+{\footnotesize\ttfamily void Cadence.\+Edge.\+set\+ComponentB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_component}{Component}}}]{B }\end{DoxyParamCaption})}
+
+Set the second component connected by this edge.
+
+
+\begin{DoxyParams}{Parameters}
+{\em B} & The new second component connected by this edge. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_cadence_1_1_edge_a611f228a9e270f8837a2df422ad2bc0b}\label{class_cadence_1_1_edge_a611f228a9e270f8837a2df422ad2bc0b} 
+\index{Cadence.Edge@{Cadence.Edge}!setDelay@{setDelay}}
+\index{setDelay@{setDelay}!Cadence.Edge@{Cadence.Edge}}
+\doxysubsubsection{\texorpdfstring{setDelay()}{setDelay()}}
+{\footnotesize\ttfamily void Cadence.\+Edge.\+set\+Delay (\begin{DoxyParamCaption}\item[{int}]{delay }\end{DoxyParamCaption})}
+
+Set the delay value of the edge.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay} & The new delay value of the edge (10, 100, 1000). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Cadence/Edge.\+java\end{DoxyCompactItemize}
