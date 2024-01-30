@@ -7,7 +7,7 @@ public class TestGraph {
         public static void main(String[] args) {
                                 try {
                         List<Graph> graphs = GraphBuilder.buildGraphFromFile("EdgeCase1.txt");
-                        CadenceSolution2 graphSolver = new CadenceSolution2();
+                        CadenceSolution graphSolver = new CadenceSolution();
 
                         for (Graph graph : graphs) {
                                 Graph.printGraph(graph);

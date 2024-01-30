@@ -157,7 +157,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (Stri
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructs a component with the specified id, resource, and density.</p>
+<p>Constructs a component with the specified id, resource, and density. Creates new ArrayList to store edges.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Unique id of the component. </td></tr>
@@ -185,6 +185,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (Stri
       </table>
 </div><div class="memdoc">
 <p>Add an edge that connects to this component.</p>
+<p>(Note: auto adds when building an edge using this component.)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">checkEdge</td><td>The edge to add. </td></tr>

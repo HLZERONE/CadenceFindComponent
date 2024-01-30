@@ -9,6 +9,7 @@ var hierarchy =
     [ "Cadence.Graph", "class_cadence_1_1_graph.html", null ],
     [ "Cadence.GraphBuilder", "class_cadence_1_1_graph_builder.html", null ],
     [ "JFrame", null, [
+      [ "Cadence.GraphVisualization", "class_cadence_1_1_graph_visualization.html", null ],
       [ "Cadence.GraphVisualization", "class_cadence_1_1_graph_visualization.html", null ]
     ] ],
     [ "Cadence.TestGraph", "class_cadence_1_1_test_graph.html", null ]

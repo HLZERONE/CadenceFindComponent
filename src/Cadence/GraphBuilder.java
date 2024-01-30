@@ -4,9 +4,10 @@ import java.util.*;
 import java.io.*;
 
 /**
- * The GraphBuilder class is responsible for buidling graphs from a file.
- * It provides a static method to parse the file and construct a list of graphs
- * based on the contents of the file.
+ * @brief Responsible for buidling graphs from a file.
+ * 
+ *        This class provides a static method to parse the file and construct a list of
+ *        graphs based on the contents of the file.
  */
 public class GraphBuilder {
 

@@ -9,7 +9,7 @@ var annotated_dup =
       [ "Get2Dconnection", "class_cadence_1_1_get2_dconnection.html", null ],
       [ "Graph", "class_cadence_1_1_graph.html", "class_cadence_1_1_graph" ],
       [ "GraphBuilder", "class_cadence_1_1_graph_builder.html", null ],
-      [ "GraphVisualization", "class_cadence_1_1_graph_visualization.html", null ],
+      [ "GraphVisualization", "class_cadence_1_1_graph_visualization.html", "class_cadence_1_1_graph_visualization" ],
       [ "TestGraph", "class_cadence_1_1_test_graph.html", null ]
     ] ]
 ];

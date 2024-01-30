@@ -49,7 +49,7 @@ Represents a component in a graph.
 \doxysubsubsection{\texorpdfstring{Component()}{Component()}}
 {\footnotesize\ttfamily Cadence.\+Component.\+Component (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{resource,  }\item[{int}]{density }\end{DoxyParamCaption})}
 
-Constructs a component with the specified id, resource, and density.
+Constructs a component with the specified id, resource, and density. Creates new Array\+List to store edges.
 
 
 \begin{DoxyParams}{Parameters}
@@ -70,6 +70,8 @@ Constructs a component with the specified id, resource, and density.
 {\footnotesize\ttfamily void Cadence.\+Component.\+add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}}}]{e }\end{DoxyParamCaption})}
 
 Add an edge that connects to this component.
+
+(Note\+: auto adds when building an edge using this component.)
 
 
 \begin{DoxyParams}{Parameters}
