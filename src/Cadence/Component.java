@@ -19,7 +19,8 @@ public class Component {
 	List<Edge> edges;
 
 	/**
-	 * Constructs a component with the specified id, resource, and density.
+	 * Constructs a component with the specified id, resource, and density. Creates
+	 * new ArrayList to store edges.
 	 * 
 	 * @param id       Unique id of the component.
 	 * @param resource Resource value of the component [1 - 8].
@@ -95,6 +96,8 @@ public class Component {
 
 	/**
 	 * Add an edge that connects to this component.
+	 * 
+	 * (Note: auto adds when building an edge using this component.)
 	 * 
 	 * @param checkEdge The edge to add.
 	 */

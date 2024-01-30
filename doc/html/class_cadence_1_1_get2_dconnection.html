@@ -97,13 +97,58 @@ $(function(){initNavTree('class_cadence_1_1_get2_dconnection.html',''); initResi
   <div class="headertitle"><div class="title">Cadence.Get2Dconnection Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Provides a utility for generating a 2D connection matrix based on a graph.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a698f2f142ed20437f6f7e4593b2d905e" id="r_a698f2f142ed20437f6f7e4593b2d905e"><td class="memItemLeft" align="right" valign="top"><a id="a698f2f142ed20437f6f7e4593b2d905e" name="a698f2f142ed20437f6f7e4593b2d905e"></a>
-static int[][]&#160;</td><td class="memItemRight" valign="bottom"><b>getConnection</b> (<a class="el" href="class_cadence_1_1_graph.html">Graph</a> graph)</td></tr>
+<tr class="memitem:a698f2f142ed20437f6f7e4593b2d905e" id="r_a698f2f142ed20437f6f7e4593b2d905e"><td class="memItemLeft" align="right" valign="top">static int[][]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a698f2f142ed20437f6f7e4593b2d905e">getConnection</a> (<a class="el" href="class_cadence_1_1_graph.html">Graph</a> graph)</td></tr>
+<tr class="memdesc:a698f2f142ed20437f6f7e4593b2d905e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a 2D connection matrix based on the provided graph.  <br /></td></tr>
 <tr class="separator:a698f2f142ed20437f6f7e4593b2d905e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Provides a utility for generating a 2D connection matrix based on a graph. </p>
+<p>This class allows you to generate a 2D connection matrix from a given graph. The connection matrix represents the connectivity between components in the graph. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a698f2f142ed20437f6f7e4593b2d905e" name="a698f2f142ed20437f6f7e4593b2d905e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a698f2f142ed20437f6f7e4593b2d905e">&#9670;&#160;</a></span>getConnection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int[][] Cadence.Get2Dconnection.getConnection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_cadence_1_1_graph.html">Graph</a></td>          <td class="paramname"><span class="paramname"><em>graph</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generates a 2D connection matrix based on the provided graph. </p>
+<pre class="fragment">   This method calculates a 2D connection matrix based on the components
+   and edges in the input graph. The matrix indicates whether there is a
+   connection between components using binary values (0 for no
+   connection, 1 for a connection).
+</pre> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graph</td><td>The graph for which the connection matrix is generated. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A 2D integer array representing the connection matrix. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/Cadence/<b>Get2Dconnection.java</b></li>
 </ul>
