@@ -45,17 +45,21 @@ public class GraphBuilder {
 
         public static void main(String[] args) {
                 try {
+                		CadenceSolution2 graphSolver = new CadenceSolution2();
                         Graph mainGraph = buildGraphFromFile("mainGraph.txt");
                         Graph subGraph = buildGraphFromFile("subGraph.txt");
 
                         System.out.println(subGraph.edges.length);
-                        List<Graph> matcher = CadenceSolution.findAllGraph(mainGraph, subGraph);
-                        System.out.println(matcher.size());
-                        for (Graph g : matcher) {
-                                System.out.println(g.edges.length);
-                                Graph.printGraph(g);
-                                System.out.println("----");
-                        }
+
+                        List<Graph> matcher = graphSolver.findAllGraph(mainGraph, subGraph);
+                    	System.out.println(matcher.size());
+                    	for(Graph g: matcher) {
+                    		System.out.println(g.edges.length);
+                    		Graph.printGraph(g);
+                    		
+                    		System.out.println("----");
+                    	}
+                    	//Graph.printGraph(subGraph);
                         
                         // Get2Dconnection get = new Get2Dconnection();
 

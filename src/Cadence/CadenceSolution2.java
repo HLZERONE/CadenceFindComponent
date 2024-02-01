@@ -45,7 +45,7 @@ public class CadenceSolution2 {
         	Component[] nextC = levels.poll();
         	Component componentOne = nextC[0];
         	Component componentTwo = nextC[1];
-        	if(componentOne.equals(beginComponent)) startComponent.add(c);
+        	if(componentOne.equals(beginComponent)) startComponent.add(componentOne);
         	
         	for(Edge e: componentTwo.edges) {
         		if(s.visitedEdge_2.contains(e.id)) continue; //edge has been visited before
