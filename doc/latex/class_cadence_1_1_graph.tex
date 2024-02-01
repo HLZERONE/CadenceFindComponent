@@ -1,0 +1,284 @@
+\doxysection{Cadence.\+Graph Class Reference}
+\hypertarget{class_cadence_1_1_graph}{}\label{class_cadence_1_1_graph}\index{Cadence.Graph@{Cadence.Graph}}
+
+
+Represents a graph with components and edges.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cadence_1_1_graph_a81bf0eae674090458aae651ababf87c7}{Graph}} (\mbox{\hyperlink{class_cadence_1_1_component}{Component}}\mbox{[}$\,$\mbox{]} c, \mbox{\hyperlink{class_cadence_1_1_edge}{Edge}}\mbox{[}$\,$\mbox{]} e)
+\item 
+int \mbox{\hyperlink{class_cadence_1_1_graph_ac69f70da263a094f195c235ef8a3c43d}{num\+Components}} ()
+\item 
+int \mbox{\hyperlink{class_cadence_1_1_graph_ae05fe58a05302c7ef2cd4b1c52eeb35a}{num\+Edges}} ()
+\item 
+\mbox{\hyperlink{class_cadence_1_1_component}{Component}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_cadence_1_1_graph_a61637d138b2bb96453a7eecdd92d609a}{get\+Components}} ()
+\item 
+Map$<$ Integer, \mbox{\hyperlink{class_cadence_1_1_component}{Component}} $>$ \mbox{\hyperlink{class_cadence_1_1_graph_afd9a98aba38e329efff2bd72d8d57aff}{get\+Component\+Map}} ()
+\item 
+\mbox{\hyperlink{class_cadence_1_1_component}{Component}} \mbox{\hyperlink{class_cadence_1_1_graph_a2fb83722d04d19fe2975194506c28088}{get\+Component}} (int id)
+\item 
+\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_cadence_1_1_graph_ae944f413040045d93cb05aa3da6d51f3}{get\+Edges}} ()
+\item 
+Map$<$ Integer, \mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} $>$ \mbox{\hyperlink{class_cadence_1_1_graph_af7ab2795568d9b5db3acb551db61cb84}{get\+Edges\+Map}} ()
+\item 
+\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} \mbox{\hyperlink{class_cadence_1_1_graph_a3fa0ba3f0cdb9563e5a4c3447bba9674}{get\+Edge}} (int id)
+\item 
+boolean \mbox{\hyperlink{class_cadence_1_1_graph_a615c1150fc55828b37ec643d62c0bf20}{check\+Edge\+By\+Id}} (int id)
+\item 
+boolean \mbox{\hyperlink{class_cadence_1_1_graph_ac1fb0ceb3bacbdf6ef1b0fb020d30ae3}{check\+Component\+By\+Id}} (int id)
+\item 
+boolean \mbox{\hyperlink{class_cadence_1_1_graph_a0081f131b076b51fca19724dfa47d7c1}{check\+Same\+Edge}} (\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} check\+Edge)
+\item 
+boolean \mbox{\hyperlink{class_cadence_1_1_graph_a4dae6ecfc6a1d40c01e7d0639545ed55}{check\+Same\+Component}} (\mbox{\hyperlink{class_cadence_1_1_component}{Component}} check\+Component)
+\item 
+\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} \mbox{\hyperlink{class_cadence_1_1_graph_a8a79d31d4dbbf948b12dbbf94dc9f58b}{get\+Same\+Edge}} (\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} check\+Edge)
+\item 
+\mbox{\hyperlink{class_cadence_1_1_component}{Component}} \mbox{\hyperlink{class_cadence_1_1_graph_adfec738f0b556bc19182d9928f2d9ef4}{get\+Same\+Component}} (\mbox{\hyperlink{class_cadence_1_1_component}{Component}} check\+Component)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_cadence_1_1_graph_aab1f32be3e251ff71ad6cb336cdcfa61}{print\+Graph}} (\mbox{\hyperlink{class_cadence_1_1_graph}{Graph}} g)
+\item 
+\Hypertarget{class_cadence_1_1_graph_a6a8fbd98bdce1a8154052209533c3b20}\label{class_cadence_1_1_graph_a6a8fbd98bdce1a8154052209533c3b20} 
+static void {\bfseries main} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a graph with components and edges. 
+
+\begin{DoxyVerb}   This class models a graph structure consisting of components (nodes)
+   and edges (connections between nodes).
+   Each component has associated resource and density attributes. Each
+   edge has a delay and connects two components.
+   Component attributes:
+   Resource range: [1 - 8]
+  Density range: [1 - 16]
+   Edge attributes:
+  Delay attribute range: [10, 100, 1000]
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_cadence_1_1_graph_a81bf0eae674090458aae651ababf87c7}\label{class_cadence_1_1_graph_a81bf0eae674090458aae651ababf87c7} 
+\index{Cadence.Graph@{Cadence.Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily Cadence.\+Graph.\+Graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_component}{Component}}\mbox{[}$\,$\mbox{]}}]{c,  }\item[{\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}}\mbox{[}$\,$\mbox{]}}]{e }\end{DoxyParamCaption})}
+
+Constructs a graph with the specified components and edges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The components in the graph. \\
+\hline
+{\em e} & The edges in the graph. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cadence_1_1_graph_ac1fb0ceb3bacbdf6ef1b0fb020d30ae3}\label{class_cadence_1_1_graph_ac1fb0ceb3bacbdf6ef1b0fb020d30ae3} 
+\index{Cadence.Graph@{Cadence.Graph}!checkComponentById@{checkComponentById}}
+\index{checkComponentById@{checkComponentById}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{checkComponentById()}{checkComponentById()}}
+{\footnotesize\ttfamily boolean Cadence.\+Graph.\+check\+Component\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+Checks if the graph contains a component with the specified ID. 
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the component to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the graph contains a component with the specified ID, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_a615c1150fc55828b37ec643d62c0bf20}\label{class_cadence_1_1_graph_a615c1150fc55828b37ec643d62c0bf20} 
+\index{Cadence.Graph@{Cadence.Graph}!checkEdgeById@{checkEdgeById}}
+\index{checkEdgeById@{checkEdgeById}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{checkEdgeById()}{checkEdgeById()}}
+{\footnotesize\ttfamily boolean Cadence.\+Graph.\+check\+Edge\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+Checks if the graph contains an edge with the specified ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the edge to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the graph contains an edge with the specified ID, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_a4dae6ecfc6a1d40c01e7d0639545ed55}\label{class_cadence_1_1_graph_a4dae6ecfc6a1d40c01e7d0639545ed55} 
+\index{Cadence.Graph@{Cadence.Graph}!checkSameComponent@{checkSameComponent}}
+\index{checkSameComponent@{checkSameComponent}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{checkSameComponent()}{checkSameComponent()}}
+{\footnotesize\ttfamily boolean Cadence.\+Graph.\+check\+Same\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_component}{Component}}}]{check\+Component }\end{DoxyParamCaption})}
+
+Checks if the graph contains a component with the same ID as the specified component. 
+\begin{DoxyParams}{Parameters}
+{\em check\+Component} & The component to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the graph contains a component with the same ID as the specified component, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_a0081f131b076b51fca19724dfa47d7c1}\label{class_cadence_1_1_graph_a0081f131b076b51fca19724dfa47d7c1} 
+\index{Cadence.Graph@{Cadence.Graph}!checkSameEdge@{checkSameEdge}}
+\index{checkSameEdge@{checkSameEdge}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{checkSameEdge()}{checkSameEdge()}}
+{\footnotesize\ttfamily boolean Cadence.\+Graph.\+check\+Same\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}}}]{check\+Edge }\end{DoxyParamCaption})}
+
+Checks if the graph contains an edge with the same ID as the specified edge. 
+\begin{DoxyParams}{Parameters}
+{\em check\+Edge} & The edge to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the graph contains an edge with the same ID as the specified edge, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_a2fb83722d04d19fe2975194506c28088}\label{class_cadence_1_1_graph_a2fb83722d04d19fe2975194506c28088} 
+\index{Cadence.Graph@{Cadence.Graph}!getComponent@{getComponent}}
+\index{getComponent@{getComponent}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{getComponent()}{getComponent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cadence_1_1_component}{Component}} Cadence.\+Graph.\+get\+Component (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+Returns the component with the specified ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the component to return. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The component with the specified ID, or null if there is no such component. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_afd9a98aba38e329efff2bd72d8d57aff}\label{class_cadence_1_1_graph_afd9a98aba38e329efff2bd72d8d57aff} 
+\index{Cadence.Graph@{Cadence.Graph}!getComponentMap@{getComponentMap}}
+\index{getComponentMap@{getComponentMap}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{getComponentMap()}{getComponentMap()}}
+{\footnotesize\ttfamily Map$<$ Integer, \mbox{\hyperlink{class_cadence_1_1_component}{Component}} $>$ Cadence.\+Graph.\+get\+Component\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the map of all components in the graph.
+
+\begin{DoxyReturn}{Returns}
+A map of component objects indexed by ID. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_a61637d138b2bb96453a7eecdd92d609a}\label{class_cadence_1_1_graph_a61637d138b2bb96453a7eecdd92d609a} 
+\index{Cadence.Graph@{Cadence.Graph}!getComponents@{getComponents}}
+\index{getComponents@{getComponents}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{getComponents()}{getComponents()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cadence_1_1_component}{Component}}\mbox{[}$\,$\mbox{]} Cadence.\+Graph.\+get\+Components (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the array of all components in the graph.
+
+\begin{DoxyReturn}{Returns}
+An array of component objects. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_a3fa0ba3f0cdb9563e5a4c3447bba9674}\label{class_cadence_1_1_graph_a3fa0ba3f0cdb9563e5a4c3447bba9674} 
+\index{Cadence.Graph@{Cadence.Graph}!getEdge@{getEdge}}
+\index{getEdge@{getEdge}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{getEdge()}{getEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} Cadence.\+Graph.\+get\+Edge (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+Returns the edge with the specified ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the edge to return. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The edge with the specified ID, or null if there is no such edge. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_ae944f413040045d93cb05aa3da6d51f3}\label{class_cadence_1_1_graph_ae944f413040045d93cb05aa3da6d51f3} 
+\index{Cadence.Graph@{Cadence.Graph}!getEdges@{getEdges}}
+\index{getEdges@{getEdges}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{getEdges()}{getEdges()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cadence_1_1_edge}{Edge}}\mbox{[}$\,$\mbox{]} Cadence.\+Graph.\+get\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the array of all edges in the graph.
+
+\begin{DoxyReturn}{Returns}
+An array of edge objects. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_af7ab2795568d9b5db3acb551db61cb84}\label{class_cadence_1_1_graph_af7ab2795568d9b5db3acb551db61cb84} 
+\index{Cadence.Graph@{Cadence.Graph}!getEdgesMap@{getEdgesMap}}
+\index{getEdgesMap@{getEdgesMap}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{getEdgesMap()}{getEdgesMap()}}
+{\footnotesize\ttfamily Map$<$ Integer, \mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} $>$ Cadence.\+Graph.\+get\+Edges\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the map of all edges in the graph.
+
+\begin{DoxyReturn}{Returns}
+A map of edge objects indexed by ID. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_adfec738f0b556bc19182d9928f2d9ef4}\label{class_cadence_1_1_graph_adfec738f0b556bc19182d9928f2d9ef4} 
+\index{Cadence.Graph@{Cadence.Graph}!getSameComponent@{getSameComponent}}
+\index{getSameComponent@{getSameComponent}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{getSameComponent()}{getSameComponent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cadence_1_1_component}{Component}} Cadence.\+Graph.\+get\+Same\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_component}{Component}}}]{check\+Component }\end{DoxyParamCaption})}
+
+Returns the component with the same ID as the specified component. 
+\begin{DoxyParams}{Parameters}
+{\em check\+Component} & The component to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The component with the same ID as the specified component, or null if there is no such component. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_a8a79d31d4dbbf948b12dbbf94dc9f58b}\label{class_cadence_1_1_graph_a8a79d31d4dbbf948b12dbbf94dc9f58b} 
+\index{Cadence.Graph@{Cadence.Graph}!getSameEdge@{getSameEdge}}
+\index{getSameEdge@{getSameEdge}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{getSameEdge()}{getSameEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} Cadence.\+Graph.\+get\+Same\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}}}]{check\+Edge }\end{DoxyParamCaption})}
+
+Returns the edge with the same ID as the specified edge. 
+\begin{DoxyParams}{Parameters}
+{\em check\+Edge} & The edge to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The edge with the same ID as the specified edge, or null if there is no such edge. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_ac69f70da263a094f195c235ef8a3c43d}\label{class_cadence_1_1_graph_ac69f70da263a094f195c235ef8a3c43d} 
+\index{Cadence.Graph@{Cadence.Graph}!numComponents@{numComponents}}
+\index{numComponents@{numComponents}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{numComponents()}{numComponents()}}
+{\footnotesize\ttfamily int Cadence.\+Graph.\+num\+Components (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the number of components in the graph.
+
+\begin{DoxyReturn}{Returns}
+The number of components in the graph. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_ae05fe58a05302c7ef2cd4b1c52eeb35a}\label{class_cadence_1_1_graph_ae05fe58a05302c7ef2cd4b1c52eeb35a} 
+\index{Cadence.Graph@{Cadence.Graph}!numEdges@{numEdges}}
+\index{numEdges@{numEdges}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{numEdges()}{numEdges()}}
+{\footnotesize\ttfamily int Cadence.\+Graph.\+num\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the number of edges in the graph.
+
+\begin{DoxyReturn}{Returns}
+The number of edges in the graph. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_graph_aab1f32be3e251ff71ad6cb336cdcfa61}\label{class_cadence_1_1_graph_aab1f32be3e251ff71ad6cb336cdcfa61} 
+\index{Cadence.Graph@{Cadence.Graph}!printGraph@{printGraph}}
+\index{printGraph@{printGraph}!Cadence.Graph@{Cadence.Graph}}
+\doxysubsubsection{\texorpdfstring{printGraph()}{printGraph()}}
+{\footnotesize\ttfamily static void Cadence.\+Graph.\+print\+Graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_graph}{Graph}}}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Prints the graph to the console. 
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph to print. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Cadence/Graph.\+java\end{DoxyCompactItemize}

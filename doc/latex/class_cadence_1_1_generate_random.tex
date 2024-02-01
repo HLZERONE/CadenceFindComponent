@@ -1,0 +1,95 @@
+\doxysection{Cadence.\+Generate\+Random Class Reference}
+\hypertarget{class_cadence_1_1_generate_random}{}\label{class_cadence_1_1_generate_random}\index{Cadence.GenerateRandom@{Cadence.GenerateRandom}}
+
+
+A class containing methods to generate random graphs and subgraphs.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_cadence_1_1_graph}{Graph}} \mbox{\hyperlink{class_cadence_1_1_generate_random_aac063bbedf0e619a940bc4868dd8ec64}{generate\+Random\+Graph}} (int num\+Of\+Components, int num\+Of\+Edges)
+\item 
+static \mbox{\hyperlink{class_cadence_1_1_graph}{Graph}} \mbox{\hyperlink{class_cadence_1_1_generate_random_a29be00989e1b0f9f796ec2b857ba2eb5}{generate\+Random\+Subgraph}} (\mbox{\hyperlink{class_cadence_1_1_graph}{Graph}} system\+Graph, int component\+Number, int edge\+Number)
+\item 
+static void \mbox{\hyperlink{class_cadence_1_1_generate_random_aaa0ecb28474d38df8d4adebea9720e2a}{main}} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class containing methods to generate random graphs and subgraphs. 
+
+\begin{DoxyVerb}   This class includes methods for generating random fully connected
+   graphs and extracting their 2D connections.
+   It also provides a method for generating random subgraphs from an
+   existing graph.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cadence_1_1_generate_random_aac063bbedf0e619a940bc4868dd8ec64}\label{class_cadence_1_1_generate_random_aac063bbedf0e619a940bc4868dd8ec64} 
+\index{Cadence.GenerateRandom@{Cadence.GenerateRandom}!generateRandomGraph@{generateRandomGraph}}
+\index{generateRandomGraph@{generateRandomGraph}!Cadence.GenerateRandom@{Cadence.GenerateRandom}}
+\doxysubsubsection{\texorpdfstring{generateRandomGraph()}{generateRandomGraph()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_cadence_1_1_graph}{Graph}} Cadence.\+Generate\+Random.\+generate\+Random\+Graph (\begin{DoxyParamCaption}\item[{int}]{num\+Of\+Components,  }\item[{int}]{num\+Of\+Edges }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Generate a random graph with specified properties.
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Of\+Components} & The number of components (vertices) in the graph. \\
+\hline
+{\em num\+Of\+Edges} & The number of edges in the graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A random graph with the specified number of components and eges. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & if the number of edges is not within the valid range. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_cadence_1_1_generate_random_a29be00989e1b0f9f796ec2b857ba2eb5}\label{class_cadence_1_1_generate_random_a29be00989e1b0f9f796ec2b857ba2eb5} 
+\index{Cadence.GenerateRandom@{Cadence.GenerateRandom}!generateRandomSubgraph@{generateRandomSubgraph}}
+\index{generateRandomSubgraph@{generateRandomSubgraph}!Cadence.GenerateRandom@{Cadence.GenerateRandom}}
+\doxysubsubsection{\texorpdfstring{generateRandomSubgraph()}{generateRandomSubgraph()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_cadence_1_1_graph}{Graph}} Cadence.\+Generate\+Random.\+generate\+Random\+Subgraph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_graph}{Graph}}}]{system\+Graph,  }\item[{int}]{component\+Number,  }\item[{int}]{edge\+Number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Gemerate a ramdom subgraph from an existing graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em system\+Graph} & The original graph from which the subgraph will be generated. \\
+\hline
+{\em component\+Number} & The desired number of components in the subgraph. \\
+\hline
+{\em edge\+Number} & The desired number of edges in the subgraph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A random subgraph with the specified number of components and edges. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & if the desired component number is greater than the original graph\textquotesingle{}s component count. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_cadence_1_1_generate_random_aaa0ecb28474d38df8d4adebea9720e2a}\label{class_cadence_1_1_generate_random_aaa0ecb28474d38df8d4adebea9720e2a} 
+\index{Cadence.GenerateRandom@{Cadence.GenerateRandom}!main@{main}}
+\index{main@{main}!Cadence.GenerateRandom@{Cadence.GenerateRandom}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily static void Cadence.\+Generate\+Random.\+main (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Main method for testing the Generate\+Random class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Cadence/Generate\+Random.\+java\end{DoxyCompactItemize}

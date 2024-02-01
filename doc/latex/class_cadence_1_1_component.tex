@@ -1,0 +1,160 @@
+\doxysection{Cadence.\+Component Class Reference}
+\hypertarget{class_cadence_1_1_component}{}\label{class_cadence_1_1_component}\index{Cadence.Component@{Cadence.Component}}
+
+
+Represents a component in a graph.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cadence_1_1_component_a495c6abbcbadf7d8be882ee8b2b599b1}{Component}} (int id, int resource, int density)
+\item 
+int \mbox{\hyperlink{class_cadence_1_1_component_ad8a7e76437adec9050ab95236a43e97a}{get\+Resource}} ()
+\item 
+int \mbox{\hyperlink{class_cadence_1_1_component_ac2d90092f7b4d1af5a04e5b6fdd6e48e}{get\+Density}} ()
+\item 
+void \mbox{\hyperlink{class_cadence_1_1_component_a844fe1509778073cb9d69d9c6c9841df}{set\+Density}} (int density)
+\item 
+void \mbox{\hyperlink{class_cadence_1_1_component_a40fbbac917976fe0a062bfa4a3b782a5}{set\+Resource}} (int resource)
+\item 
+boolean \mbox{\hyperlink{class_cadence_1_1_component_a063f7830f069b9dc73db8a02747b2c4f}{equals}} (\mbox{\hyperlink{class_cadence_1_1_component}{Component}} other\+Component)
+\item 
+void \mbox{\hyperlink{class_cadence_1_1_component_a434c22752347d8dabe1e06a93b57c5e5}{add\+Edge}} (\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}} e)
+\item 
+\mbox{\hyperlink{class_cadence_1_1_component}{Component}} \mbox{\hyperlink{class_cadence_1_1_component_a2c28d73e0962c1dc0d5e15f16aa7c7a3}{clone}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_cadence_1_1_component_a598f3f5d807f98448dfedae0b43bd452}\label{class_cadence_1_1_component_a598f3f5d807f98448dfedae0b43bd452} 
+static void {\bfseries main} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a component in a graph. 
+
+\begin{DoxyVerb}   This class models a component in a graph. Each component has a unique
+   id, resource, and density.
+   Resource range: [1 - 8]
+   Density range: [1 - 16]
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_cadence_1_1_component_a495c6abbcbadf7d8be882ee8b2b599b1}\label{class_cadence_1_1_component_a495c6abbcbadf7d8be882ee8b2b599b1} 
+\index{Cadence.Component@{Cadence.Component}!Component@{Component}}
+\index{Component@{Component}!Cadence.Component@{Cadence.Component}}
+\doxysubsubsection{\texorpdfstring{Component()}{Component()}}
+{\footnotesize\ttfamily Cadence.\+Component.\+Component (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{resource,  }\item[{int}]{density }\end{DoxyParamCaption})}
+
+Constructs a component with the specified id, resource, and density. Creates new Array\+List to store edges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Unique id of the component. \\
+\hline
+{\em resource} & Resource value of the component \mbox{[}1 -\/ 8\mbox{]}. \\
+\hline
+{\em density} & Density value of the component \mbox{[}1 -\/ 16\mbox{]}. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cadence_1_1_component_a434c22752347d8dabe1e06a93b57c5e5}\label{class_cadence_1_1_component_a434c22752347d8dabe1e06a93b57c5e5} 
+\index{Cadence.Component@{Cadence.Component}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Cadence.Component@{Cadence.Component}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Cadence.\+Component.\+add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_edge}{Edge}}}]{e }\end{DoxyParamCaption})}
+
+Add an edge that connects to this component.
+
+(Note\+: auto adds when building an edge using this component.)
+
+
+\begin{DoxyParams}{Parameters}
+{\em check\+Edge} & The edge to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_cadence_1_1_component_a2c28d73e0962c1dc0d5e15f16aa7c7a3}\label{class_cadence_1_1_component_a2c28d73e0962c1dc0d5e15f16aa7c7a3} 
+\index{Cadence.Component@{Cadence.Component}!clone@{clone}}
+\index{clone@{clone}!Cadence.Component@{Cadence.Component}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cadence_1_1_component}{Component}} Cadence.\+Component.\+clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clones the current component.
+
+\begin{DoxyReturn}{Returns}
+A new component with the same id, resource, and density values. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_component_a063f7830f069b9dc73db8a02747b2c4f}\label{class_cadence_1_1_component_a063f7830f069b9dc73db8a02747b2c4f} 
+\index{Cadence.Component@{Cadence.Component}!equals@{equals}}
+\index{equals@{equals}!Cadence.Component@{Cadence.Component}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}}
+{\footnotesize\ttfamily boolean Cadence.\+Component.\+equals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_component}{Component}}}]{other\+Component }\end{DoxyParamCaption})}
+
+Check if two components are equal based on their resource and density values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other\+Component} & The other component to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the two components are equal, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_component_ac2d90092f7b4d1af5a04e5b6fdd6e48e}\label{class_cadence_1_1_component_ac2d90092f7b4d1af5a04e5b6fdd6e48e} 
+\index{Cadence.Component@{Cadence.Component}!getDensity@{getDensity}}
+\index{getDensity@{getDensity}!Cadence.Component@{Cadence.Component}}
+\doxysubsubsection{\texorpdfstring{getDensity()}{getDensity()}}
+{\footnotesize\ttfamily int Cadence.\+Component.\+get\+Density (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the density value of the component.
+
+\begin{DoxyReturn}{Returns}
+The density value of the component. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_component_ad8a7e76437adec9050ab95236a43e97a}\label{class_cadence_1_1_component_ad8a7e76437adec9050ab95236a43e97a} 
+\index{Cadence.Component@{Cadence.Component}!getResource@{getResource}}
+\index{getResource@{getResource}!Cadence.Component@{Cadence.Component}}
+\doxysubsubsection{\texorpdfstring{getResource()}{getResource()}}
+{\footnotesize\ttfamily int Cadence.\+Component.\+get\+Resource (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the resource value of the component.
+
+\begin{DoxyReturn}{Returns}
+The resource value of the component. 
+\end{DoxyReturn}
+\Hypertarget{class_cadence_1_1_component_a844fe1509778073cb9d69d9c6c9841df}\label{class_cadence_1_1_component_a844fe1509778073cb9d69d9c6c9841df} 
+\index{Cadence.Component@{Cadence.Component}!setDensity@{setDensity}}
+\index{setDensity@{setDensity}!Cadence.Component@{Cadence.Component}}
+\doxysubsubsection{\texorpdfstring{setDensity()}{setDensity()}}
+{\footnotesize\ttfamily void Cadence.\+Component.\+set\+Density (\begin{DoxyParamCaption}\item[{int}]{density }\end{DoxyParamCaption})}
+
+Sets the density value of the component.
+
+
+\begin{DoxyParams}{Parameters}
+{\em density} & The density value of the component. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_cadence_1_1_component_a40fbbac917976fe0a062bfa4a3b782a5}\label{class_cadence_1_1_component_a40fbbac917976fe0a062bfa4a3b782a5} 
+\index{Cadence.Component@{Cadence.Component}!setResource@{setResource}}
+\index{setResource@{setResource}!Cadence.Component@{Cadence.Component}}
+\doxysubsubsection{\texorpdfstring{setResource()}{setResource()}}
+{\footnotesize\ttfamily void Cadence.\+Component.\+set\+Resource (\begin{DoxyParamCaption}\item[{int}]{resource }\end{DoxyParamCaption})}
+
+Sets the resource value of the component.
+
+
+\begin{DoxyParams}{Parameters}
+{\em resource} & The resource value of the component. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Cadence/Component.\+java\end{DoxyCompactItemize}

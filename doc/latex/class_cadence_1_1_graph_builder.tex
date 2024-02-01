@@ -1,0 +1,52 @@
+\doxysection{Cadence.\+Graph\+Builder Class Reference}
+\hypertarget{class_cadence_1_1_graph_builder}{}\label{class_cadence_1_1_graph_builder}\index{Cadence.GraphBuilder@{Cadence.GraphBuilder}}
+
+
+Responsible for buidling graphs from a file.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static List$<$ \mbox{\hyperlink{class_cadence_1_1_graph}{Graph}} $>$ \mbox{\hyperlink{class_cadence_1_1_graph_builder_abbb627a5ac85a139acff1a9c56a02d8b}{build\+Graph\+From\+File}} (String file\+Name)  throws IOException 
+\item 
+\Hypertarget{class_cadence_1_1_graph_builder_a2716fba0b6b7784fda199436c1975f5a}\label{class_cadence_1_1_graph_builder_a2716fba0b6b7784fda199436c1975f5a} 
+static void {\bfseries main} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Responsible for buidling graphs from a file. 
+
+\begin{DoxyVerb}   This class provides a static method to parse the file and construct a list of
+   graphs based on the contents of the file.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cadence_1_1_graph_builder_abbb627a5ac85a139acff1a9c56a02d8b}\label{class_cadence_1_1_graph_builder_abbb627a5ac85a139acff1a9c56a02d8b} 
+\index{Cadence.GraphBuilder@{Cadence.GraphBuilder}!buildGraphFromFile@{buildGraphFromFile}}
+\index{buildGraphFromFile@{buildGraphFromFile}!Cadence.GraphBuilder@{Cadence.GraphBuilder}}
+\doxysubsubsection{\texorpdfstring{buildGraphFromFile()}{buildGraphFromFile()}}
+{\footnotesize\ttfamily static List$<$ \mbox{\hyperlink{class_cadence_1_1_graph}{Graph}} $>$ Cadence.\+Graph\+Builder.\+build\+Graph\+From\+File (\begin{DoxyParamCaption}\item[{String}]{file\+Name }\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [static]}}
+
+This method parses the file and constructs a list of graphs based on the contents of the file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & the name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list of graphs, index 0 is the system graph, index 1 is the query graph 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & This exception is thrown if the file is not found \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Cadence/Graph\+Builder.\+java\end{DoxyCompactItemize}

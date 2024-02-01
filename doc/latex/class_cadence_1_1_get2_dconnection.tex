@@ -1,0 +1,48 @@
+\doxysection{Cadence.\+Get2\+Dconnection Class Reference}
+\hypertarget{class_cadence_1_1_get2_dconnection}{}\label{class_cadence_1_1_get2_dconnection}\index{Cadence.Get2Dconnection@{Cadence.Get2Dconnection}}
+
+
+Provides a utility for generating a 2D connection matrix based on a graph.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_cadence_1_1_get2_dconnection_a698f2f142ed20437f6f7e4593b2d905e}{get\+Connection}} (\mbox{\hyperlink{class_cadence_1_1_graph}{Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Generates a 2D connection matrix based on the provided graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides a utility for generating a 2D connection matrix based on a graph. 
+
+This class allows you to generate a 2D connection matrix from a given graph. The connection matrix represents the connectivity between components in the graph. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cadence_1_1_get2_dconnection_a698f2f142ed20437f6f7e4593b2d905e}\label{class_cadence_1_1_get2_dconnection_a698f2f142ed20437f6f7e4593b2d905e} 
+\index{Cadence.Get2Dconnection@{Cadence.Get2Dconnection}!getConnection@{getConnection}}
+\index{getConnection@{getConnection}!Cadence.Get2Dconnection@{Cadence.Get2Dconnection}}
+\doxysubsubsection{\texorpdfstring{getConnection()}{getConnection()}}
+{\footnotesize\ttfamily static int\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} Cadence.\+Get2\+Dconnection.\+get\+Connection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cadence_1_1_graph}{Graph}}}]{graph }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Generates a 2D connection matrix based on the provided graph. 
+
+\begin{DoxyVerb}   This method calculates a 2D connection matrix based on the components
+   and edges in the input graph. The matrix indicates whether there is a
+   connection between components using binary values (0 for no
+   connection, 1 for a connection).
+\end{DoxyVerb}
+ 
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph for which the connection matrix is generated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A 2D integer array representing the connection matrix. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Cadence/Get2\+Dconnection.\+java\end{DoxyCompactItemize}
