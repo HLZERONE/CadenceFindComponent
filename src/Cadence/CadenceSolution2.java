@@ -38,6 +38,7 @@ public class CadenceSolution2 {
         //C2 graph
         s.visitedComponent_2.add(c2.id);
         
+        
         Queue<Component[]> levels = new LinkedList<>();
         levels.add(new Component[] {c1, c2});
         
@@ -47,12 +48,20 @@ public class CadenceSolution2 {
         	Component componentTwo = nextC[1];
         	if(componentOne.equals(beginComponent)) startComponent.add(componentOne);
         	
+        	
         	for(Edge e: componentTwo.edges) {
         		if(s.visitedEdge_2.contains(e.id)) continue; //edge has been visited before
         		s.visitedEdge_2.add(e.id);
         		
         		Component otherEndTwo = e.getOtherComponent(componentTwo);
-        		if(s.visitedComponent_2.contains(otherEndTwo.id)) continue; //component has been visited before
+        		if(s.visitedComponent_2.contains(otherEndTwo.id)){//component has been visited before, but edge not visited
+        			
+        			Edge sameE = findSameEdgeWithVisitedComponent(componentOne, e, s.visitedEdge_1);
+            		if(sameE == null) return;
+            		s.addEdgeToGraph(sameE);
+            		
+            		continue;
+        		}
         		
         		//not visited the component yet
         		
@@ -65,7 +74,6 @@ public class CadenceSolution2 {
         				Component otherEnd = sameEdge.get(i).getOtherComponent(componentOne);
         				State newS = s.copyState();
         				newS.addEdgeToGraph(sameEdge.get(i));
-        				
         				SychronousBFS(otherEnd, otherEndTwo, newS);
         			}
         		}
@@ -149,7 +157,16 @@ public class CadenceSolution2 {
 		return sameEdge;
 	}
 	
-	
+	//Assumption: only one Edge connect between two component
+	private Edge findSameEdgeWithVisitedComponent(Component InputComponent, Edge targetEdge, Set<Integer> visitedEdge) {
+		for(Edge e: InputComponent.edges) {
+			//not visited, same edge, with not visited other side component
+			if(!visitedEdge.contains(e.id) && e.equals(targetEdge)){
+				return e;
+			}
+		}
+		return null;
+	}
 
     
     public static void main(String[] args) {

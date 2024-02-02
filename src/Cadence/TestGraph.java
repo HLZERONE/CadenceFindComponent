@@ -7,7 +7,7 @@ public class TestGraph {
         public static void main(String[] args) {
                                 try {
                         List<Graph> graphs = GraphBuilder.buildGraphFromFile("EdgeCase1.txt");
-                        CadenceSolution graphSolver = new CadenceSolution();
+                        CadenceSolution2 graphSolver = new CadenceSolution2();
 
                         for (Graph graph : graphs) {
                                 Graph.printGraph(graph);
@@ -18,12 +18,13 @@ public class TestGraph {
                         // System.out.println(graphs.get(0).edges.length);
 
                         List<Graph> matcher = graphSolver.findAllGraph(graphs.get(0), graphs.get(1));
-                        System.out.println(matcher.size());
+                        System.out.println("Total match graph number: " + matcher.size());
                         for (Graph g : matcher) {
+                        		System.out.println(g.components.length);
                                 System.out.println(g.edges.length);
                                 Graph.printGraph(g);
                                 System.out.println("----");
-                                Graph.printGraph(graphs.get(1));
+                                //Graph.printGraph(graphs.get(1));
                         }
 
                         // Get2Dconnection get = new Get2Dconnection();

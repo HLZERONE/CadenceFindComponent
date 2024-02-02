@@ -181,7 +181,7 @@ public class GenerateRandom {
 
     public static void main(String[] args) {
         // generates a fully connected graph with 5 vertices
-        get2Dconnection get = new get2Dconnection();
+        Get2Dconnection get = new Get2Dconnection();
 
         Graph g = GenerateRandom.generateRandomGraph(5, 4);
         System.out.println("number of components: " + g.components.length);
