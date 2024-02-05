@@ -92,7 +92,8 @@ public class GraphVisualization extends JFrame {
         Graph smallGraph = new Graph(smallComponents, smallEdges);
 
         //find the graph
-        List<Graph> matcher = CadenceSolution.findAllGraph(AGraph, smallGraph);
+        CadenceSolution2 graphSolver = new CadenceSolution2();
+        List<Graph> matcher = graphSolver.findAllGraph(AGraph, smallGraph);
 
         int[][] adMatrix1 = Get2Dconnection.getConnection(AGraph);
         int[][] adMatrix2 = Get2Dconnection.getConnection(matcher.get(0));

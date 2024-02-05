@@ -91,7 +91,7 @@ public class GraphBuilder {
 
         public static void main(String[] args) {
                 try {
-                        List<Graph> graphs = buildGraphFromFile("EdgeCase1.txt");
+                        List<Graph> graphs = buildGraphFromFile("EdgeCase2.txt");
                         CadenceSolution2 graphSolver = new CadenceSolution2();
 
                         for (Graph graph : graphs) {
