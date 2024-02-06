@@ -45,13 +45,15 @@ public class GraphBuilderCSV {
                                         edgeList.toArray(new Edge[0]));
                         graphs.add(graph);
                 });
+
+                
+
                 return graphs;
         }
 
         public static void main(String[] args) {
                 try {
-                        List<Graph> graphs = buildGraphFromFile("EdgeCase1.csv");
-                        CadenceSolution graphSolver = new CadenceSolution();
+                        List<Graph> graphs = buildGraphFromFile("EdgeCase2.csv");
 
                         // for (Graph graph : graphs) {
                         //         Graph.printGraph(graph);

@@ -91,13 +91,13 @@ public class GraphBuilder {
 
         public static void main(String[] args) {
                 try {
-                        List<Graph> graphs = buildGraphFromFile("EdgeCase2.txt");
-                        CadenceSolution2 graphSolver = new CadenceSolution2();
+                        List<Graph> graphs = buildGraphFromFile("EdgeCase1.txt");
+                        CadenceSolution graphSolver = new CadenceSolution();
 
-                        for (Graph graph : graphs) {
-                                Graph.printGraph(graph);
-                                System.out.println("----");
-                        }
+                        // for (Graph graph : graphs) {
+                        //         Graph.printGraph(graph);
+                        //         System.out.println("----");
+                        // }
 
                         // System.out.println(graphs);
                         // System.out.println(graphs.get(0).edges.length);

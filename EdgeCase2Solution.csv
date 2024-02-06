@@ -1,0 +1,6 @@
+graph,edge_id,edge_delay,nodeA_id,nodeA_resource,nodeA_density,nodeB_id,nodeB_resource,nodeB_density
+result1,1,100,1,2,4,2,3,5
+result2,2,100,1,2,4,3,3,5
+result3,5,100,3,3,5,4,2,4
+result4,6,100,4,2,4,6,3,5
+result5,7,100,6,3,5,7,2,4
