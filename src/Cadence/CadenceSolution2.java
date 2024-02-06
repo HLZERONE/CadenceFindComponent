@@ -171,7 +171,7 @@ public class CadenceSolution2 {
     
     public static void main(String[] args) {
     	CadenceSolution2 graphSolver = new CadenceSolution2();
-    	Graph AGraph = GenerateRandom.generateRandomGraph(400, 399);
+    	Graph AGraph = GenerateRandom.generateRandomGraph(1000, 999);
     	Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, 3, 2);
     	System.out.println(Asmall.edges.length);
     	
