@@ -6,22 +6,26 @@ import java.util.List;
 public class TestGraph {
         public static void main(String[] args) {
                                 try {
-                        List<Graph> graphs = GraphBuilder.buildGraphFromFile("EdgeCase2.csv");
-                        // CadenceSolution2 graphSolver = new CadenceSolution2();
-
+                        List<Graph> graphs = GraphBuilder.buildGraphFromFile("EdgeCase1.txt");
+                        CadenceSolution2 graphSolver = new CadenceSolution2();
+                        
+                        /*
                         for (Graph graph : graphs) {
                                 Graph.printGraph(graph);
                                 System.out.println("----");
                         }
+                        */
+                        Graph targetG = graphs.get(1);
 
-                        // System.out.println(graphs);
+                        //System.out.println(graphs.size());
                         // System.out.println(graphs.get(0).edges.length);
-
-                        List<Graph> matcher = CadenceSolution.findAllGraph(graphs.get(0), graphs.get(1));
+                        
+                        List<Graph> matcher = graphSolver.findAllGraph(graphs.get(0), graphs.get(1));
                         System.out.println("Total match graph number: " + matcher.size());
                         for (Graph g : matcher) {
-                        		System.out.println(g.components.length);
-                                System.out.println(g.edges.length);
+                        		System.out.println("Component Number: " + g.components.length);
+                                System.out.println("Edge Number: " + g.edges.length);
+                                System.out.println("Match: " + targetG.equals(g));
                                 Graph.printGraph(g);
                                 System.out.println("----");
                                 //Graph.printGraph(graphs.get(1));

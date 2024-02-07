@@ -49,6 +49,13 @@ public class Graph {
 	 * @param c The components in the graph.
 	 * @param e The edges in the graph.
 	 */
+	
+	/**
+	 * The components and edges array has been sorted or not
+	 * Be used at equal() function
+	 */
+	boolean beenSort = false;
+	
 	public Graph(Component[] c, Edge[] e) {
 		this.components = c;
 		this.edges = e;
@@ -219,8 +226,40 @@ public class Graph {
 		}
 		return null;
 	}
-
-	// TODO: EQUALS FUNCTION FOR GRAPH
+	
+	public void sort() {
+		Arrays.sort(components, new ComponentComparator());
+		Arrays.sort(edges, new EdgeComparator());
+		beenSort = true;
+	}
+	
+	public boolean equals(Graph otherG) {
+		if(this.components.length != otherG.components.length || this.edges.length != otherG.edges.length) return false;
+		
+		//Check if sort yet
+		if(!beenSort) {
+			sort();
+		}
+		if(!otherG.beenSort) {
+			otherG.sort();
+		}
+		
+		//Check if Components equal
+		for(int i=0; i<components.length; i++) {
+			if(!components[i].equals(otherG.components[i])) {
+				return false;
+			}
+		}
+		
+		//Check if Edges equal
+		for(int i=0; i<edges.length; i++) {
+			if(!edges[i].equals(otherG.edges[i])) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
 
 	/**
 	 * Prints the graph to the console.
@@ -235,7 +274,9 @@ public class Graph {
 					+ e.getComponentB().density + " resource: " + e.getComponentB().resource);
 		}
 	}
-
+	
+	
+	
 	public static void main(String[] args) {
 
 	}
