@@ -108,7 +108,7 @@ public class GraphBuilder {
                                 System.out.println(g.edges.length);
                                 Graph.printGraph(g);
                                 System.out.println("----");
-                                Graph.printGraph(graphs.get(1));
+                                // Graph.printGraph(graphs.get(1));
                         }
 
                         // Get2Dconnection get = new Get2Dconnection();

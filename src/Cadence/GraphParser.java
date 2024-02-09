@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class GraphBuilderCSV {
+public class GraphParser {
         public static List<Graph> buildGraphFromFile(String fileName) throws IOException {
 
                 Map<String, List<Component>> graphComponents = new HashMap<>();
@@ -51,14 +51,24 @@ public class GraphBuilderCSV {
                 return graphs;
         }
 
+        public static List<Graph> saveGraphAsFile(String fileName, List<Graph> graphs) throws IOException {
+                
+                return null;
+        }
+
         public static void main(String[] args) {
                 try {
-                        List<Graph> graphs = buildGraphFromFile("EdgeCase2.csv");
+                        List<Graph> graphs = buildGraphFromFile("EdgeCase1.csv");
+                        List<Graph> graphsSolution = buildGraphFromFile("EdgeCase1Solution.csv");
 
-                        // for (Graph graph : graphs) {
-                        //         Graph.printGraph(graph);
-                        //         System.out.println("----");
-                        // }
+                        for (Graph graph : graphsSolution) {
+                                Graph.printGraph(graph);
+                                System.out.println("----");
+                        }
+                        for (Graph graph : graphs) {
+                                Graph.printGraph(graph);
+                                System.out.println("----");
+                        }
 
                         // System.out.println(graphs);
                         // System.out.println(graphs.get(0).edges.length);

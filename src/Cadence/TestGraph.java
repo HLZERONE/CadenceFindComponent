@@ -6,7 +6,7 @@ import java.util.List;
 public class TestGraph {
         public static void main(String[] args) {
                                 try {
-                        List<Graph> graphs = GraphBuilder.buildGraphFromFile("EdgeCase1.txt");
+                        List<Graph> graphs = GraphParser.buildGraphFromFile("EdgeCase1.csv");
                         CadenceSolution2 graphSolver = new CadenceSolution2();
                         
                         /*
@@ -54,16 +54,6 @@ public class TestGraph {
                         // for (int i = 0; i < testConnection.length; i++) {
                         // for (int j = 0; j < testConnection[i].length; j++) {
                         // System.out.print(testConnection[i][j] + " ");
-                        // }
-                        // System.out.println();
-                        // }
-
-                        // System.out.println("test subgraph generation");
-                        // int[][] array = get.getConnection(GenerateRandom.generateRandomSubgraph(g, 3,
-                        // 2));
-                        // for (int[] row : array) {
-                        // for (int element : row) {
-                        // System.out.print(element + " ");
                         // }
                         // System.out.println();
                         // }
