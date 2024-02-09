@@ -266,6 +266,9 @@ public class Graph {
 	 * @param g The graph to print.
 	 */
 	public static void printGraph(Graph g) {
+		for(Component c: g.components) {
+			System.out.println("Component ID: " + c.id + " Density: " + c.density + " Edge Num: " + c.edges.size());
+		}
 		for (Edge e : g.edges) {
 			System.out.println("Edge ID: " + e.id + " Delay: " + e.delay);
 			System.out.println("	Component" + e.getComponentA().id + " density: "

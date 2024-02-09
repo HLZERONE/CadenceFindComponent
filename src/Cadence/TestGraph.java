@@ -15,12 +15,16 @@ public class TestGraph {
                                 System.out.println("----");
                         }
                         */
+                        
+                        Graph bigG = graphs.get(0);
                         Graph targetG = graphs.get(1);
 
-                        //System.out.println(graphs.size());
-                        // System.out.println(graphs.get(0).edges.length);
+                        System.out.println("Big Graph: ");
+                        Graph.printGraph(bigG);
+                        System.out.println("Target Graph: ");
+                        Graph.printGraph(targetG);
                         
-                        List<Graph> matcher = graphSolver.findAllGraph(graphs.get(0), graphs.get(1));
+                        List<Graph> matcher = graphSolver.findAllGraph(bigG, targetG);
                         System.out.println("Total match graph number: " + matcher.size());
                         for (Graph g : matcher) {
                         		System.out.println("Component Number: " + g.components.length);
