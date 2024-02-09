@@ -69,6 +69,7 @@ public class CadenceSolution2 {
         		List<Edge> sameEdge = findSameEdge(componentOne, e, s.visitedEdge_1, s.visitedComponent_1);
         		if(sameEdge.size() == 0) return;
         		
+        		
         		else if(sameEdge.size() > 1) {
         			for(int i=1; i<sameEdge.size(); i++) {
         				Component otherEnd = sameEdge.get(i).getOtherComponent(componentOne);
@@ -77,6 +78,7 @@ public class CadenceSolution2 {
         				SychronousBFS(otherEnd, otherEndTwo, newS);
         			}
         		}
+        		
         		
         		Component otherEndOne = sameEdge.get(0).getOtherComponent(componentOne);
         		

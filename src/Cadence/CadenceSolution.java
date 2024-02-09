@@ -56,8 +56,9 @@ public class CadenceSolution {
         while(!levels_1.isEmpty() && !levels_2.isEmpty()) {
         	Component componentOne = levels_1.poll();
         	Component componentTwo = levels_2.poll();
-        	
+        	//System.out.println("Component: " + componentTwo.id + " " + componentTwo.edges.size());
         	for(Edge e: componentTwo.edges) {
+        		//System.out.println("Edge: " + e.id + " " + e.delay);
         		if(visitedEdge_2.contains(e.id)) continue; //edge has been visited before
         		visitedEdge_2.add(e.id);
         		
@@ -92,6 +93,7 @@ public class CadenceSolution {
         Component[] graphC = components.toArray(new Component[components.size()]);
         Edge[] graphE = edges.toArray(new Edge[edges.size()]);
         
+        //System.out.println("END");
         return new Graph(graphC, graphE);
 	}
 	
