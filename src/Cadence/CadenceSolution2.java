@@ -10,8 +10,11 @@ public class CadenceSolution2 {
 	Set<Component> startComponent = new HashSet<>();
 	Component beginComponent;
 	
-	//TODO: Function that find the target start component in Big Graph, once found, call SychronousBFS
+	long lastRunTime = 0;
+	
 	public List<Graph> findAllGraph(Graph searchGraph, Graph targetGraph){
+		long startTime = System.nanoTime();
+		
 		//edge cases
 		if(searchGraph == null || targetGraph == null || targetGraph.components.length == 0) return new ArrayList<>();
 		
@@ -26,7 +29,16 @@ public class CadenceSolution2 {
 			}
 		}
 		
+		long endTime = System.nanoTime();
+
+		this.lastRunTime = (endTime - startTime);
+		
 		return allTarget;
+	}
+	
+	//return the runtime in nanoseconds of the last call of findAllGraph function
+	public long getLastRunTime() {
+		return lastRunTime;
 	}
 	
 	private void SychronousBFS(Component c1, Component c2, State s){
