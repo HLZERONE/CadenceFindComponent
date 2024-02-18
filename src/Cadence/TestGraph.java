@@ -26,6 +26,7 @@ public class TestGraph {
                         
                         List<Graph> matcher = graphSolver.findAllGraph(bigG, targetG);
                         System.out.println("Total match graph number: " + matcher.size());
+                        System.out.println("Runtime in nanoseconds: " + graphSolver.lastRunTime);
                         for (Graph g : matcher) {
                         		System.out.println("Component Number: " + g.components.length);
                                 System.out.println("Edge Number: " + g.edges.length);
