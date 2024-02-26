@@ -5,16 +5,11 @@ import java.util.List;
 
 public class TestGraph {
         public static void main(String[] args) {
-                                try {
+            try {
+                        
                         List<Graph> graphs = GraphParser.buildGraphFromFile("EdgeCase1.csv");
                         CadenceSolution2 graphSolver = new CadenceSolution2();
                         
-                        /*
-                        for (Graph graph : graphs) {
-                                Graph.printGraph(graph);
-                                System.out.println("----");
-                        }
-                        */
                         
                         Graph bigG = graphs.get(0);
                         Graph targetG = graphs.get(1);

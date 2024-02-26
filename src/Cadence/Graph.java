@@ -247,6 +247,9 @@ public class Graph {
 		//Check if Components equal
 		for(int i=0; i<components.length; i++) {
 			if(!components[i].equals(otherG.components[i])) {
+				System.out.print("The not equal Component: ");
+				components[i].print();
+				otherG.components[i].print();
 				return false;
 			}
 		}
@@ -254,6 +257,9 @@ public class Graph {
 		//Check if Edges equal
 		for(int i=0; i<edges.length; i++) {
 			if(!edges[i].equals(otherG.edges[i])) {
+				System.out.print("The not equal Edge: ");
+				edges[i].print();
+				otherG.edges[i].print();
 				return false;
 			}
 		}
@@ -267,14 +273,10 @@ public class Graph {
 	 */
 	public static void printGraph(Graph g) {
 		for(Component c: g.components) {
-			System.out.println("Component ID: " + c.id + " Density: " + c.density + " Edge Num: " + c.edges.size());
+			c.print();
 		}
 		for (Edge e : g.edges) {
-			System.out.println("Edge ID: " + e.id + " Delay: " + e.delay);
-			System.out.println("	Component" + e.getComponentA().id + " density: "
-					+ e.getComponentA().density + " resource: " + e.getComponentA().resource);
-			System.out.println("	Component" + e.getComponentB().id + " density: "
-					+ e.getComponentB().density + " resource: " + e.getComponentB().resource);
+			e.print();
 		}
 	}
 	

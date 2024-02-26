@@ -127,8 +127,7 @@ public class Edge {
 		// OR Component == otherEdge.ComponentB && ComponentB == otherEdge.ComponentA
 		return this.delay == otherEdge.getDelay() &&
 				(A.equals(otherEdge.getComponentA()) && B.equals(otherEdge.getComponentB()) ||
-						A.equals(otherEdge.getComponentB())
-								&& B.equals(otherEdge.getComponentA()));
+						A.equals(otherEdge.getComponentB())&& B.equals(otherEdge.getComponentA()));
 	}
 
 	// clone the current edge
@@ -139,6 +138,12 @@ public class Edge {
 	 */
 	public Edge clone() {
 		return new Edge(this.id, this.A.clone(), this.B.clone(), this.delay);
+	}
+	
+	public void print() {
+		System.out.println("Edge ID: " + this.id + " Delay: " + this.delay);
+		A.print();
+		B.print();
 	}
 
 	public static void main(String[] args) {

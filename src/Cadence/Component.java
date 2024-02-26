@@ -90,7 +90,6 @@ public class Component {
 	 * @return True if the two components are equal, false otherwise.
 	 */
 	public boolean equals(Component otherComponent) {
-		// TODO: Check if edges list are equal
 		return this.density == otherComponent.getDensity() && this.resource == otherComponent.getResource();
 	}
 
@@ -112,6 +111,11 @@ public class Component {
 	 */
 	public Component clone() {
 		return new Component(this.id, this.resource, this.density);
+	}
+	
+	public void print() {
+		System.out.println("Component ID: " + this.id + " Density: " + this.density + 
+				" Resource: " + this.resource + " Edge Num: " + this.edges.size());
 	}
 
 	public static void main(String[] args) {
