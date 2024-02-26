@@ -10,7 +10,7 @@ public class CadenceSolution2 {
 	Set<Component> startComponent = new HashSet<>();
 	Component beginComponent;
 	
-	long lastRunTime = 0;
+	double lastRunTime = 0;
 	
 	public List<Graph> findAllGraph(Graph searchGraph, Graph targetGraph){
 		long startTime = System.nanoTime();
@@ -31,13 +31,13 @@ public class CadenceSolution2 {
 		
 		long endTime = System.nanoTime();
 
-		this.lastRunTime = (endTime - startTime);
+		this.lastRunTime = (double)(endTime - startTime)/1000000.0;
 		
 		return allTarget;
 	}
 	
 	//return the runtime in nanoseconds of the last call of findAllGraph function
-	public long getLastRunTime() {
+	public double getLastRunTime() {
 		return lastRunTime;
 	}
 	
@@ -181,47 +181,78 @@ public class CadenceSolution2 {
 		}
 		return null;
 	}
-
+	
+	public static void multiTest(int loop, int bigGComponentNum, int bigGEdgeNum, int targetGComponentNum, int targetGEdgeNum) {
+		CadenceSolution2 graphSolver = new CadenceSolution2();
+    	double totalRuntime = 0;
+    	int errorCount = 0;
+    	for(int i=0; i<loop; i++) {
+        	Graph AGraph = GenerateRandom.generateRandomGraph(bigGComponentNum, bigGEdgeNum);
+        	Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, targetGComponentNum, targetGEdgeNum);
+        	
+        	List<Graph> matcher = graphSolver.findAllGraph(AGraph, Asmall);
+        	totalRuntime += graphSolver.getLastRunTime();
+        	for(Graph g: matcher) {
+        		if(!Asmall.equals(g)) {
+        			errorCount++;
+        			System.out.println("TARGET GRAPH: ");
+                	Graph.printGraph(Asmall);
+        			System.out.println("INCORRECT GRAPH: ");
+             		Graph.printGraph(g);
+        		}
+        	}
+    	}
+    	System.out.println("AVG RUNTIME(MS): " + totalRuntime/loop);
+    	System.out.println("Error Rate(%): " + (double)errorCount/loop * 100);
+	}
     
     public static void main(String[] args) {
+    	CadenceSolution2.multiTest(100, 1000, 999, 10, 9);
+    	/*
     	CadenceSolution2 graphSolver = new CadenceSolution2();
     	Graph AGraph = GenerateRandom.generateRandomGraph(1000, 999);
-    	Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, 3, 2);
-    	System.out.println(Asmall.edges.length);
+    	Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, 10, 9);
     	
     	List<Graph> matcher = graphSolver.findAllGraph(AGraph, Asmall);
-    	System.out.println(matcher.size());
+    	//Graph.printGraph(Asmall);
+    	System.out.println("Number of Match: " + matcher.size());
+    	System.out.println("Runtime in ms: " + graphSolver.getLastRunTime());
     	for(Graph g: matcher) {
-    		System.out.println(g.edges.length);
-    		Graph.printGraph(g);
-    		
+    		System.out.println("isMatch: " + Asmall.equals(g));
+    		//Graph.printGraph(g);		
     		System.out.println("----");
-    		Graph.printGraph(Asmall);
     	}
-    	/*
-    	//build small graph
-    	Edge randomEdge = AGraph.getEdge(0).clone(); //select an edge to copy
-    	Edge[] smallEdges = new Edge[] {randomEdge};
-    	Component[] smallComponents = new Component[] {randomEdge.getComponentA(), randomEdge.getComponentB()};
-    	Graph smallGraph = new Graph(smallComponents, smallEdges);
+    	*/
     	
-    	//find the graph
-    	List<Graph> matcher = findAllGraph(AGraph, smallGraph);
-    	for(Graph g: matcher) {
-    		Graph.printGraph(g);
-    		System.out.println("----");
-    	}
-    	Graph.printGraph(smallGraph);
-    	System.out.println("----");
+
+    	
+//    	//build small graph
+//    	System.out.println("Custom Graph");
+//    	Edge randomEdge = AGraph.getEdge(0).clone(); //select an edge to copy
+//    	Edge[] smallEdges = new Edge[] {randomEdge};
+//    	Component[] smallComponents = new Component[] {randomEdge.getComponentA(), randomEdge.getComponentB()};
+//    	Graph smallGraph = new Graph(smallComponents, smallEdges);
+//    	
+//    	Graph.printGraph(smallGraph);
+//    	System.out.println("Number of Match: " + matcher.size());
+//    	System.out.println("Runtime in nanoseconds: " + graphSolver.getLastRunTime());
+//    	//find the graph
+//    	matcher = graphSolver.findAllGraph(AGraph, smallGraph);
+//    	for(Graph g: matcher) {
+//    		System.out.println("isMatch: " + Asmall.equals(g));
+//    		Graph.printGraph(g);		
+//    		System.out.println("----");
+//    	}
+    	
     	
     	//try not match graph
-    	Graph BGraph = GenerateRandom.generateRandomGraph(3, 2);
-    	List<Graph> ABmatcher = findAllGraph(AGraph, BGraph);
-    	System.out.println(ABmatcher.size()); //should be zero
-    	Graph.printGraph(AGraph);
-    	System.out.println("----");
-    	Graph.printGraph(BGraph);
-    	*/
+//    	System.out.println("Unmatch Graph");
+//    	Graph BGraph = GenerateRandom.generateRandomGraph(10, 9);
+//    	List<Graph> ABmatcher = graphSolver.findAllGraph(AGraph, BGraph);
+//    	System.out.println("isMatch: "+ ABmatcher.size()); //should be zero
+//    	System.out.println("Runtime in nanoseconds: " + graphSolver.getLastRunTime());
+//    	System.out.println("----");
+//    	
     }
     
     
