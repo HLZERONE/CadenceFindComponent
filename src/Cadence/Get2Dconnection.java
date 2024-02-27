@@ -3,7 +3,7 @@ package Cadence;
 /**
  * @brief Provides a utility for generating a 2D connection matrix based on a
  *        graph.
- * 
+ *
  *        This class allows you to generate a 2D connection matrix from a given
  *        graph. The connection matrix represents the connectivity between
  *        components in the graph.
@@ -12,7 +12,7 @@ public class Get2Dconnection {
 
     /**
      * @brief Generates a 2D connection matrix based on the provided graph.
-     * 
+     *
      *        This method calculates a 2D connection matrix based on the components
      *        and edges in the input graph. The matrix indicates whether there is a
      *        connection between components using binary values (0 for no
@@ -39,9 +39,9 @@ public class Get2Dconnection {
             Component componentB = e.getComponentB();
 
             // Set the connection between components to 1 (indicating a connection)
-            if (connection2DArray[componentA.id % numOfComponents][componentB.id % numOfComponents] != 1) {
-                connection2DArray[componentA.id % numOfComponents][componentB.id % numOfComponents] = 1;
-                connection2DArray[componentB.id % numOfComponents][componentA.id % numOfComponents] = 1;
+            if (connection2DArray[componentA.id % numOfComponents][componentB.id % numOfComponents] == 0) {
+                connection2DArray[componentA.id % numOfComponents][componentB.id % numOfComponents] = e.getDelay();
+                connection2DArray[componentB.id % numOfComponents][componentA.id % numOfComponents] = e.getDelay();
             }
         }
 
