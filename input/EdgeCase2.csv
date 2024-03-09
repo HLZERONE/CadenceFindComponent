@@ -1,0 +1,10 @@
+graph,edge_id,edge_delay,nodeA_id,nodeA_resource,nodeA_density,nodeB_id,nodeB_resource,nodeB_density
+system,1,100,1,2,4,2,3,5
+system,2,100,1,2,4,3,3,5
+system,3,10,2,3,5,5,3,5
+system,4,10,3,3,5,5,3,5
+system,5,100,3,3,5,4,2,4
+system,6,100,4,2,4,6,3,5
+system,7,100,6,3,5,7,2,4
+system,8,1000,6,3,5,8,3,5
+query,1,100,1,3,5,2,2,4
