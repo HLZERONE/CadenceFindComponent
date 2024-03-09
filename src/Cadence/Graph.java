@@ -234,7 +234,13 @@ public class Graph {
 	}
 	
 	public boolean equals(Graph otherG) {
-		if(this.components.length != otherG.components.length || this.edges.length != otherG.edges.length) return false;
+		if(this.components.length != otherG.components.length || this.edges.length != otherG.edges.length) {
+			System.out.println("Unequal Length:");
+			System.out.println("Component Length: " + this.components.length + " " + otherG.components.length);
+			System.out.println("Edge Length: " + this.edges.length + " " + otherG.edges.length);
+			
+			return false;
+		}
 		
 		//Check if sort yet
 		if(!beenSort) {
@@ -247,7 +253,7 @@ public class Graph {
 		//Check if Components equal
 		for(int i=0; i<components.length; i++) {
 			if(!components[i].equals(otherG.components[i])) {
-				System.out.print("The not equal Component: ");
+				System.out.println("The not equal Component: ");
 				components[i].print();
 				otherG.components[i].print();
 				return false;
@@ -257,7 +263,7 @@ public class Graph {
 		//Check if Edges equal
 		for(int i=0; i<edges.length; i++) {
 			if(!edges[i].equals(otherG.edges[i])) {
-				System.out.print("The not equal Edge: ");
+				System.out.println("The not equal Edge: ");
 				edges[i].print();
 				otherG.edges[i].print();
 				return false;
@@ -272,9 +278,9 @@ public class Graph {
 	 * @param g The graph to print.
 	 */
 	public static void printGraph(Graph g) {
-		for(Component c: g.components) {
-			c.print();
-		}
+//		for(Component c: g.components) {
+//			c.print();
+//		}
 		for (Edge e : g.edges) {
 			e.print();
 		}
