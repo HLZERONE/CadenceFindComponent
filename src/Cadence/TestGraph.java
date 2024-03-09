@@ -7,7 +7,7 @@ public class TestGraph {
         public static void main(String[] args) {
             try {
                         
-                        List<Graph> graphs = GraphParser.buildGraphFromFile("EdgeCase1.csv");
+                        List<Graph> graphs = GraphParser.buildGraphFromFile("input\\EdgeCase1.csv");
                         CadenceSolution2 graphSolver = new CadenceSolution2();
                         
                         

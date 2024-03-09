@@ -97,8 +97,12 @@ public class GUI {
                                         // Graph.printGraph(graphs.get(1));
                                 }
 
-                                GraphVisualization graphVisualization = new GraphVisualization(Get2Dconnection.getConnection(bigG), bigG);
+                                // System graph
+                                GraphVisualization graphVisualization = new GraphVisualization(Get2Dconnection.getConnection(bigG), bigG); 
                                 graphVisualization.setVisible(true);
+
+                                GraphVisualization graphVisualization2 = new GraphVisualization(Get2Dconnection.getConnection(matcher.get(0)), matcher.get(0));
+                                graphVisualization2.setVisible(true);
                         } catch (Exception ex) {
                                 ex.printStackTrace();
                         }
