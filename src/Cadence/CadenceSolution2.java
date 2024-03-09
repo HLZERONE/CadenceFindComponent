@@ -186,6 +186,8 @@ public class CadenceSolution2 {
 		CadenceSolution2 graphSolver = new CadenceSolution2();
     	double totalRuntime = 0;
     	int errorCount = 0;
+    	
+    	OuterLoop:
     	for(int i=0; i<loop; i++) {
         	Graph AGraph = GenerateRandom.generateRandomGraph(bigGComponentNum, bigGEdgeNum);
         	Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, targetGComponentNum, targetGEdgeNum);
@@ -195,10 +197,13 @@ public class CadenceSolution2 {
         	for(Graph g: matcher) {
         		if(!Asmall.equals(g)) {
         			errorCount++;
+        			/*
         			System.out.println("TARGET GRAPH: ");
                 	Graph.printGraph(Asmall);
         			System.out.println("INCORRECT GRAPH: ");
              		Graph.printGraph(g);
+             		break OuterLoop;
+             		*/
         		}
         	}
     	}
@@ -207,7 +212,8 @@ public class CadenceSolution2 {
 	}
     
     public static void main(String[] args) {
-    	CadenceSolution2.multiTest(100, 1000, 999, 10, 9);
+    	//int loop, int bigGComponentNum, int bigGEdgeNum, int targetGComponentNum, int targetGEdgeNum
+    	CadenceSolution2.multiTest(1000, 1000, 999, 100, 99);
     	/*
     	CadenceSolution2 graphSolver = new CadenceSolution2();
     	Graph AGraph = GenerateRandom.generateRandomGraph(1000, 999);
