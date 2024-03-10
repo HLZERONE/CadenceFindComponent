@@ -6,26 +6,24 @@ import java.util.List;
 public class TestGraph {
         public static void main(String[] args) {
             try {
-                        
-                        List<Graph> graphs = GraphParser.buildGraphFromFile("input\\EdgeCase1.csv");
+                        String inputFile = "input\\EdgeCase1.json";
+                        Graph systemGraph = GraphParserJSON.buildSystemGraph(inputFile);
+                        Graph queryGraph = GraphParserJSON.buildQueryGraph(inputFile);
+
                         CadenceSolution2 graphSolver = new CadenceSolution2();
                         
-                        
-                        Graph bigG = graphs.get(0);
-                        Graph targetG = graphs.get(1);
-
                         System.out.println("Big Graph: ");
-                        Graph.printGraph(bigG);
+                        Graph.printGraph(systemGraph);
                         System.out.println("Target Graph: ");
-                        Graph.printGraph(targetG);
+                        Graph.printGraph(queryGraph);
                         
-                        List<Graph> matcher = graphSolver.findAllGraph(bigG, targetG);
+                        List<Graph> matcher = graphSolver.findAllGraph(systemGraph, queryGraph);
                         System.out.println("Total match graph number: " + matcher.size());
                         System.out.println("Runtime in nanoseconds: " + graphSolver.lastRunTime);
                         for (Graph g : matcher) {
                         		System.out.println("Component Number: " + g.components.length);
                                 System.out.println("Edge Number: " + g.edges.length);
-                                System.out.println("Match: " + targetG.equals(g));
+                                System.out.println("Match: " + queryGraph.equals(g));
                                 Graph.printGraph(g);
                                 System.out.println("----");
                                 //Graph.printGraph(graphs.get(1));

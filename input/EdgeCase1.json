@@ -1,0 +1,124 @@
+{
+        "system": {
+                "nodes": {
+                        "1": {
+                                "resource": "1",
+                                "density": "1",
+                                "edges": {
+                                        "1": {
+                                                "node_id": "2",
+                                                "edge_delay": "10"
+                                        },
+                                        "2": {
+                                                "node_id": "3",
+                                                "edge_delay": "10"
+                                        },
+                                        "5": {
+                                                "node_id": "4",
+                                                "edge_delay": "1000"
+                                        }
+                                }
+                        },
+                        "2": {
+                                "resource": "2",
+                                "density": "2",
+                                "edges": {
+                                        "1": {
+                                                "node_id": "1",
+                                                "edge_delay": "10"
+                                        },
+                                        "3": {
+                                                "node_id": "4",
+                                                "edge_delay": "100"
+                                        },
+                                        "6": {
+                                                "node_id": "3",
+                                                "edge_delay": "10"
+                                        }
+                                }
+                        },
+                        "3": {
+                                "resource": "2",
+                                "density": "2",
+                                "edges": {
+                                        "2": {
+                                                "node_id": "1",
+                                                "edge_delay": "10"
+                                        },
+                                        "4": {
+                                                "node_id": "4",
+                                                "edge_delay": "100"
+                                        },
+                                        "6": {
+                                                "node_id": "2",
+                                                "edge_delay": "10"
+                                        }
+                                }
+                        },
+                        "4": {
+                                "resource": "4",
+                                "density": "4",
+                                "edges": {
+                                        "3": {
+                                                "node_id": "2",
+                                                "edge_delay": "100"
+                                        },
+                                        "4": {
+                                                "node_id": "3",
+                                                "edge_delay": "100"
+                                        },
+                                        "5": {
+                                                "node_id": "1",
+                                                "edge_delay": "1000"
+                                        }
+                                }
+                        }
+                }
+        },
+        "query": {
+                "nodes": {
+                        "1": {
+                                "resource": "1",
+                                "density": "1",
+                                "edges": {
+                                        "1": {
+                                                "node_id": "2",
+                                                "edge_delay": "10"
+                                        },
+                                        "3": {
+                                                "node_id": "3",
+                                                "edge_delay": "1000"
+                                        }
+                                }
+                        },
+                        "2": {
+                                "resource": "2",
+                                "density": "2",
+                                "edges": {
+                                        "1": {
+                                                "node_id": "1",
+                                                "edge_delay": "10"
+                                        },
+                                        "2": {
+                                                "node_id": "3",
+                                                "edge_delay": "100"
+                                        }
+                                }
+                        },
+                        "3": {
+                                "resource": "4",
+                                "density": "4",
+                                "edges": {
+                                        "2": {
+                                                "node_id": "2",
+                                                "edge_delay": "100"
+                                        },
+                                        "3": {
+                                                "node_id": "1",
+                                                "edge_delay": "1000"
+                                        }
+                                }
+                        }
+                }
+        }
+}
