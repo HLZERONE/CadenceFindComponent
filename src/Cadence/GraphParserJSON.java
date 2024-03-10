@@ -113,10 +113,39 @@ public class GraphParserJSON {
 
         }
 
-        
+        public static JSONObject graphToJson(Graph graph) {
+                JSONObject componentsJson = new JSONObject();
 
-        public static void saveGraphAsFile(String fileName, Graph systemGraph, Graph queryGraph) {
+                for (Component c : graph.getComponents()) {
+                        JSONObject componentJson = new JSONObject();
+                        componentJson.put("resource", String.valueOf(c.getResource()));
+                        componentJson.put("density", String.valueOf(c.getDensity()));
 
+                        JSONObject edgesJson = new JSONObject();
+                        for (Edge e : c.edges) {
+                                JSONObject edgeJson = new JSONObject();
+                                edgeJson.put("node_id", String.valueOf(e.getOtherComponent(c).id));
+                                edgeJson.put("edge_delay", String.valueOf(e.getDelay()));
+                                edgesJson.put(String.valueOf(e.getId()), edgeJson);
+                        }
+
+                        componentJson.put("edges", edgesJson);
+                        componentsJson.put(String.valueOf(c.id), componentJson);
+                }
+
+                return componentsJson;
+        }
+
+        public static void combineGraphsToJsonFile(Graph systemGraph, Graph queryGraph, String fileName) {
+                JSONObject fullGraphJson = new JSONObject();
+                fullGraphJson.put("system", new JSONObject().put("nodes", graphToJson(systemGraph)));
+                fullGraphJson.put("query", new JSONObject().put("nodes", graphToJson(queryGraph)));
+                try {
+                        Files.write(Paths.get(fileName), fullGraphJson.toString(4).getBytes());
+
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
         }
 
         public static void main(String[] args) {
@@ -156,6 +185,18 @@ public class GraphParserJSON {
                                 System.out.println("----");
                                 // Graph.printGraph(graphs.get(1));
                         }
+
+                        // combineGraphsToJsonFile(systemGraph, queryGraph, "output\\EdgeCase1.json");
+                        // systemGraph = buildSystemGraph("output\\EdgeCase1.json");
+                        // queryGraph = buildQueryGraph("output\\EdgeCase1.json");
+                        // System.out.format("There are %d result graphs.\n", matcher.size());
+                        // for (Graph g : matcher) {
+                        //         // System.out.println(g.edges.length);
+                        //         Graph.printGraph(g);
+                        //         System.out.println("----");
+                        //         // Graph.printGraph(graphs.get(1));
+                        // }
+
                 } catch (IOException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();

@@ -1,13 +1,8 @@
 package Cadence;
 
-import java.util.*;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class ErrorSave {
 
@@ -19,54 +14,37 @@ public class ErrorSave {
                 int errorCount = 0;
 
                 // Use LocalDateTime and DateTimeFormatter to generate a timestamp
-                LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd_HHmmss");
-                String formattedDateTime = now.format(formatter); // Example: "240307_152835"
+                LocalDateTime now;
+
+                String formattedDateTime;
 
                 // Include the formatted date and time in the filename
+                String errorFilename;
 
-                String errorFilename = "error\\error_graphs_test_" + formattedDateTime + ".csv";
-                // Initialize BufferedWriter outside the loop to keep adding to the same file
-                try (BufferedWriter errorWriter = new BufferedWriter(new FileWriter(errorFilename))) {
-                        errorWriter.write(
-                                        "Graph,EdgeID,EdgeDelay,NodeA_ID,NodeA_Resource,NodeA_Density,NodeB_ID,NodeB_Resource,NodeB_Density\n"); // Header
+                for (int i = 0; i < loop; i++) {
+                        now = LocalDateTime.now();
+                        formattedDateTime = now.format(formatter); // Example: "240307_152835"
+                        errorFilename = "error\\error_graphs_test_" + formattedDateTime + ".json";
 
-                        for (int i = 0; i < loop; i++) {
-                                Graph AGraph = GenerateRandom.generateRandomGraph(bigGComponentNum, bigGEdgeNum);
-                                Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, targetGComponentNum,
-                                                targetGEdgeNum);
+                        Graph AGraph = GenerateRandom.generateRandomGraph(bigGComponentNum, bigGEdgeNum);
+                        Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, targetGComponentNum,
+                                        targetGEdgeNum);
 
-                                List<Graph> matcher = graphSolver.findAllGraph(AGraph, Asmall);
-                                totalRuntime += graphSolver.getLastRunTime();
-                                for (Graph g : matcher) {
-                                        if (!Asmall.equals(g)) {
-                                                errorCount++;
-                                                // Append the error graph details to the file
-                                                appendGraphToFile(errorWriter, "system", AGraph, i);
-                                                appendGraphToFile(errorWriter, "query", Asmall, i);
-                                        }
+                        List<Graph> matcher = graphSolver.findAllGraph(AGraph, Asmall);
+                        totalRuntime += graphSolver.getLastRunTime();
+                        for (Graph g : matcher) {
+                                if (!Asmall.equals(g)) {
+                                        errorCount++;
+                                        // Create graph to file
+                                        GraphParserJSON.combineGraphsToJsonFile(AGraph, Asmall, errorFilename);
                                 }
                         }
-
-                        System.out.println("AVG RUNTIME(MS): " + totalRuntime / loop);
-                        System.out.println("Error Rate(%): " + (double) errorCount / loop * 100);
-
-                } catch (IOException e) {
-                        e.printStackTrace();
                 }
-        }
 
-        private static void appendGraphToFile(BufferedWriter writer, String graphName, Graph graph, int testId) throws IOException {
-                for (Edge edge : graph.getEdges()) {
-                        Component nodeA = edge.getComponentA();
-                        Component nodeB = edge.getComponentB();
-                        writer.write(String.format("%s,%d,%d,%d,%d,%d,%d,%d,%d\n",
-                                        graphName,
-                                        edge.getId(),
-                                        edge.getDelay(),
-                                        nodeA.id, nodeA.getResource(), nodeA.getDensity(),
-                                        nodeB.id, nodeB.getResource(), nodeB.getDensity()));
-                }
+                System.out.println("AVG RUNTIME(MS): " + totalRuntime / loop);
+                System.out.println("Error Rate(%): " + (double) errorCount / loop * 100);
+
         }
 
         public static void main(String[] args) {
