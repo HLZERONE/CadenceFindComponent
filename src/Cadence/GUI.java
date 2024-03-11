@@ -70,7 +70,7 @@ public class GUI {
                         try {
                                 Graph systemGraph = GraphParserJSON.buildSystemGraph(selectedFile.getAbsolutePath());
                                 Graph queryGraph = GraphParserJSON.buildQueryGraph(selectedFile.getAbsolutePath());
-                                
+
                                 CadenceSolution2 graphSolver = new CadenceSolution2();
 
                                 /*
@@ -80,28 +80,83 @@ public class GUI {
                                  * }
                                  */
 
-                                System.out.println("Big Graph: ");
-                                Graph.printGraph(systemGraph);
-                                System.out.println("Target Graph: ");
-                                Graph.printGraph(queryGraph);
+                                // System.out.println("Big Graph: ");
+                                // Graph.printGraph(systemGraph);
+                                // System.out.println("Target Graph: ");
+                                // Graph.printGraph(queryGraph);
+
+                                log.append("Big Graph: \n");
+                                for (Edge systemEdges : systemGraph.edges) {
+                                        log.append("Edge ID: " + systemEdges.id + " Delay: " + systemEdges.delay
+                                                        + "\n");
+                                        log.append("Component ID: " + systemEdges.A.id + " Density: "
+                                                        + systemEdges.A.density +
+                                                        " Resource: " + systemEdges.A.resource + " Edge Num: "
+                                                        + systemEdges.A.edges.size() + "\n");
+                                        log.append("Component ID: " + systemEdges.B.id + " Density: "
+                                                        + systemEdges.B.density +
+                                                        " Resource: " + systemEdges.B.resource + " Edge Num: "
+                                                        + systemEdges.B.edges.size() + "\n");
+                                }
+
+                                log.append("Target Graph: \n");
+                                for (Edge queryEdges : queryGraph.edges) {
+                                        log.append("Edge ID: " + queryEdges.id + " Delay: " + queryEdges.delay + "\n");
+                                        log.append("Component ID: " + queryEdges.A.id + " Density: "
+                                                        + queryEdges.A.density +
+                                                        " Resource: " + queryEdges.A.resource + " Edge Num: "
+                                                        + queryEdges.A.edges.size() + "\n");
+                                        log.append("Component ID: " + queryEdges.B.id + " Density: "
+                                                        + queryEdges.B.density +
+                                                        " Resource: " + queryEdges.B.resource + " Edge Num: "
+                                                        + queryEdges.B.edges.size() + "\n");
+                                }
 
                                 List<Graph> matcher = graphSolver.findAllGraph(systemGraph, queryGraph);
-                                System.out.println("Total match graph number: " + matcher.size());
+                                // System.out.println("Total match graph number: " + matcher.size());
+                                // for (Graph g : matcher) {
+                                //         System.out.println("Component Number: " + g.components.length);
+                                //         System.out.println("Edge Number: " + g.edges.length);
+                                //         System.out.println("Match: " + queryGraph.equals(g));
+                                //         Graph.printGraph(g);
+                                //         System.out.println("----");
+                                //         // Graph.printGraph(graphs.get(1));
+                                // }
+
+                                log.append("Total match graph number: " + matcher.size() + "\n");
                                 for (Graph g : matcher) {
-                                        System.out.println("Component Number: " + g.components.length);
-                                        System.out.println("Edge Number: " + g.edges.length);
-                                        System.out.println("Match: " + queryGraph.equals(g));
-                                        Graph.printGraph(g);
-                                        System.out.println("----");
+                                        log.append("Component Number: " + g.components.length + "\n");
+                                        log.append("Edge Number: " + g.edges.length + "\n");
+                                        log.append("Match: " + queryGraph.equals(g) + "\n");
+                                        for (Edge edge : g.edges) {
+                                                log.append("Edge ID: " + edge.id + " Delay: " + edge.delay + "\n");
+                                                log.append("Component ID: " + edge.A.id + " Density: "
+                                                                + edge.A.density +
+                                                                " Resource: " + edge.A.resource + " Edge Num: "
+                                                                + edge.A.edges.size() + "\n");
+                                                log.append("Component ID: " + edge.B.id + " Density: "
+                                                                + edge.B.density +
+                                                                " Resource: " + edge.B.resource + " Edge Num: "
+                                                                + edge.B.edges.size() + "\n");
+                                        }
+                                        log.append("----");
                                         // Graph.printGraph(graphs.get(1));
                                 }
 
                                 // System graph
-                                GraphVisualization graphVisualization = new GraphVisualization(Get2Dconnection.getConnection(systemGraph), systemGraph); 
-                                graphVisualization.setVisible(true);
+                                // GraphVisualization graphVisualization = new
+                                // GraphVisualization(Get2Dconnection.getConnection(systemGraph), systemGraph);
+                                // graphVisualization.setVisible(true);
 
-                                GraphVisualization graphVisualization2 = new GraphVisualization(Get2Dconnection.getConnection(matcher.get(0)), matcher.get(0));
-                                graphVisualization2.setVisible(true);
+                                // GraphVisualization graphVisualization2 = new
+                                // GraphVisualization(Get2Dconnection.getConnection(matcher.get(0)),
+                                // matcher.get(0));
+                                // graphVisualization2.setVisible(true);
+
+                                // GraphVisualizationSmall graphVisualizationSmall = new
+                                // GraphVisualizationSmall(Get2Dconnection.getConnection(systemGraph),
+                                // systemGraph, queryGraph);
+                                // graphVisualizationSmall.setVisible(true);
                         } catch (Exception ex) {
                                 ex.printStackTrace();
                         }
