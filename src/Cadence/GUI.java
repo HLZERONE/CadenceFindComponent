@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 public class GUI {
 
         private final int WIDTH = 600;
-        private final int HEIGHT = 300;
+        private final int HEIGHT = 900;
 
         private JFrame frame;
         JButton openButton, closeProgramButton, runButton;
@@ -53,7 +53,7 @@ public class GUI {
         }
 
         private void log() {
-                log = new JTextArea(10, 50);
+                log = new JTextArea(40, 50);
                 log.setMargin(new Insets(5, 5, 5, 5));
                 log.setEditable(false);
                 JScrollPane logScrollPane = new JScrollPane(log);
@@ -145,7 +145,7 @@ public class GUI {
                                                                 " Resource: " + edge.B.resource + " Edge Num: "
                                                                 + edge.B.edges.size() + "\n");
                                         }
-                                        log.append("----");
+                                        log.append("----\n");
                                         // Graph.printGraph(graphs.get(1));
                                 }
 
