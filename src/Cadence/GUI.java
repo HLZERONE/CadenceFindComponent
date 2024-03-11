@@ -68,7 +68,9 @@ public class GUI {
                 runButton = new JButton("Run");
                 runButton.addActionListener(e -> {
                         try {
-                                List<Graph> graphs = GraphParser.buildGraphFromFile(selectedFile.getAbsolutePath());
+                                Graph systemGraph = GraphParserJSON.buildSystemGraph(selectedFile.getAbsolutePath());
+                                Graph queryGraph = GraphParserJSON.buildQueryGraph(selectedFile.getAbsolutePath());
+                                
                                 CadenceSolution2 graphSolver = new CadenceSolution2();
 
                                 /*
@@ -78,27 +80,24 @@ public class GUI {
                                  * }
                                  */
 
-                                Graph bigG = graphs.get(0);
-                                Graph targetG = graphs.get(1);
-
                                 System.out.println("Big Graph: ");
-                                Graph.printGraph(bigG);
+                                Graph.printGraph(systemGraph);
                                 System.out.println("Target Graph: ");
-                                Graph.printGraph(targetG);
+                                Graph.printGraph(queryGraph);
 
-                                List<Graph> matcher = graphSolver.findAllGraph(bigG, targetG);
+                                List<Graph> matcher = graphSolver.findAllGraph(systemGraph, queryGraph);
                                 System.out.println("Total match graph number: " + matcher.size());
                                 for (Graph g : matcher) {
                                         System.out.println("Component Number: " + g.components.length);
                                         System.out.println("Edge Number: " + g.edges.length);
-                                        System.out.println("Match: " + targetG.equals(g));
+                                        System.out.println("Match: " + queryGraph.equals(g));
                                         Graph.printGraph(g);
                                         System.out.println("----");
                                         // Graph.printGraph(graphs.get(1));
                                 }
 
                                 // System graph
-                                GraphVisualization graphVisualization = new GraphVisualization(Get2Dconnection.getConnection(bigG), bigG); 
+                                GraphVisualization graphVisualization = new GraphVisualization(Get2Dconnection.getConnection(systemGraph), systemGraph); 
                                 graphVisualization.setVisible(true);
 
                                 GraphVisualization graphVisualization2 = new GraphVisualization(Get2Dconnection.getConnection(matcher.get(0)), matcher.get(0));

@@ -15,17 +15,15 @@ public class ErrorSave {
 
                 // Use LocalDateTime and DateTimeFormatter to generate a timestamp
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd_HHmmss");
-                LocalDateTime now;
+                LocalDateTime now = LocalDateTime.now();
 
-                String formattedDateTime;
+                String formattedDateTime = now.format(formatter); // Example: "240307_152835"
 
                 // Include the formatted date and time in the filename
                 String errorFilename;
 
                 for (int i = 0; i < loop; i++) {
-                        now = LocalDateTime.now();
-                        formattedDateTime = now.format(formatter); // Example: "240307_152835"
-                        errorFilename = "error\\error_graphs_test_" + formattedDateTime + ".json";
+                        errorFilename = "error\\error_graphs_test_" + formattedDateTime + "_" + errorCount + ".json";
 
                         Graph AGraph = GenerateRandom.generateRandomGraph(bigGComponentNum, bigGEdgeNum);
                         Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, targetGComponentNum,
@@ -48,7 +46,7 @@ public class ErrorSave {
         }
 
         public static void main(String[] args) {
-                SaveErrorGraphToFile(1000, 1000, 999, 10, 9);
+                SaveErrorGraphToFile(10000, 1000, 999, 10, 9);
 
                 // CadenceSolution2 graphSolver = new CadenceSolution2();
                 // Graph AGraph = GenerateRandom.generateRandomGraph(1000, 999);
