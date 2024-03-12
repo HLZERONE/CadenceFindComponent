@@ -1,4 +1,5 @@
 package Cadence;
+import javax.swing.*;
 import java.util.*;
 
 
@@ -10,31 +11,21 @@ public class GenerateRandom {
     // Graph g = GenerateRandom.generateRandomGraph(5, 4);
     // - generating a random graph with 5 vertices and 4 edges
     public static Graph generateRandomGraph(int numOfComponents, int numOfEdges){
-        try {
-            if((numOfEdges > numOfComponents*(numOfComponents-1)/2) || numOfEdges < numOfComponents-1) {
-                throw new Exception("the number of edges depends on the number of vertices \n" +
-                        " should be within the range of [" + (numOfComponents-1) + ", " +
-                        numOfComponents*(numOfComponents-1)/2 + "]");
-            }
-        }
-        catch(Exception e) {
-            System.out.println(e);
-        }
 
-        int[][] connection2DArray = new int[numOfComponents][numOfComponents];
-        for (int i = 0; i < numOfComponents; i++) {
-            for (int j = 0; j < numOfComponents; j++) {
-                if(i == j){
-                    connection2DArray[i][j] = 1;
-                }
-                else {
-                    connection2DArray[i][j] = 0;
-                }
-            }
+        if((numOfEdges > numOfComponents*(numOfComponents-1)/2) || numOfEdges < numOfComponents-1) {
+            System.out.println("the number of edges depends on the number of vertices \n" +
+                    " should be within the range of [" + (numOfComponents-1) + ", " +
+                    numOfComponents + "*" + (numOfComponents-1) + "/2 ]");
         }
 
         Component[] components = new Component[numOfComponents];
         Edge[] edges = new Edge[numOfEdges];
+
+        HashMap<Integer, Integer>[] connectionInfo = new HashMap[numOfComponents];
+        for (int i = 0; i < numOfComponents; i++){
+            connectionInfo[i] = new HashMap<>();
+        }
+
         Random random = new Random();
 
         for (int i = 0; i < numOfComponents; i++){
@@ -51,41 +42,33 @@ public class GenerateRandom {
 
             Edge randomEdge = new Edge(currentNumOfEdges, components[i], components[i+1], randomDelay);
             edges[currentNumOfEdges] = randomEdge;
-            connection2DArray[i][i+1] = 1;
-            connection2DArray[i+1][i] = 1;
+
+            connectionInfo[i].put(i+1, randomDelay);
+            connectionInfo[i+1].put(i, randomDelay);
 
             currentNumOfEdges += 1;
         }
 
-        while(currentNumOfEdges != numOfEdges){
-            int randomComponentIndex = random.nextInt(numOfComponents);
-            int randomIndex = random.nextInt(edgeDelays.length);
-            int randomDelay = edgeDelays[randomIndex];
+        outerloop:
+        for (int j = 0; j < numOfComponents; j++){
+            for(int i = 0; i < numOfComponents; i++){
+                if (currentNumOfEdges == numOfEdges){
+                    break  outerloop;
+                }
+                if (j != i && connectionInfo[j].containsKey(i) == false) {
+                    int randomIndex = random.nextInt(edgeDelays.length);
+                    int randomDelay = edgeDelays[randomIndex];
+                    Edge randomEdge = new Edge(currentNumOfEdges, components[j], components[i], randomDelay);
+                    edges[currentNumOfEdges] = randomEdge;
 
-            int unconnectedComponentA = 0;
-            int unconnectedComponentB = 0;
-            outerLoop:
-            for (int i = randomComponentIndex; i < randomComponentIndex + connection2DArray.length; i++) {
-                int index = i % connection2DArray.length;
-                for (int j = 0; j < connection2DArray[index].length; j++) {
-                    if (connection2DArray[index][j] == 0) {
-                        unconnectedComponentA = index;
-                        unconnectedComponentB = j;
-                        connection2DArray[index][j] = 1;
-                        connection2DArray[j][index] = 1;
-                        break outerLoop;
-                    }
+                    connectionInfo[j].put(i, randomDelay);
+                    connectionInfo[i].put(j, randomDelay);
+                    currentNumOfEdges += 1;
                 }
             }
-
-            Edge randomEdge = new Edge(currentNumOfEdges, components[unconnectedComponentA], components[unconnectedComponentB], randomDelay);
-            edges[currentNumOfEdges] = randomEdge;
-            currentNumOfEdges += 1;
-
         }
 
         return new Graph(components, edges);
-        //return new Result(returnGraph, connection2DArray);
     }
 
     public static Graph generateRandomSubgraph(Graph systemGraph, int componentNumber, int edgeNumber){
@@ -94,84 +77,67 @@ public class GenerateRandom {
         //example:
         // Graph bigGraph = GenerateRandom.generateRandomGraph(5, 4);
         // Graph subGraph = GenerateRandom.generateRandomSubgraph(bigGraph, 3, 2)
-        try {
-            if(componentNumber > systemGraph.numComponents()) {
-                throw new Exception("too many components, should be less than: " + systemGraph.numEdges());
-            }
+
+        if(componentNumber > systemGraph.numComponents()) {
+            System.out.println("too many components, should be less than or equal to: " + systemGraph.numComponents());
         }
-        catch(Exception e) {
-            System.out.println(e);
+        if(edgeNumber > systemGraph.numEdges()){
+            System.out.println("too many edges, should be less than or equal to: " + systemGraph.numEdges());
         }
+        if(edgeNumber < componentNumber - 1){
+            System.out.println("too little edges, should be at least " + (componentNumber - 1));
+        }
+
 
         ArrayList<Component> components = new ArrayList<>();
         ArrayList<Edge> edges = new ArrayList<>();
-        ArrayList<Integer> edgeConnection = new ArrayList<Integer>();
-        HashSet<Integer> availableEdgeIDs = new HashSet<>();
+
+        List<Edge> currentNeighborEdges = new ArrayList<>();
 
         HashSet<Integer> visitedComponents = new HashSet<>();
-        HashSet<Integer> visitedEdges = new HashSet<>();
 
         Random random = new Random();
         int currentComponentIndex = random.nextInt(systemGraph.numComponents());
-        Component startComponent = systemGraph.getComponent(currentComponentIndex);
-        visitedComponents.add(startComponent.id);
+        Component currentSysComponent = systemGraph.getComponent(currentComponentIndex);
 
+        visitedComponents.add(currentSysComponent.id);
         int currentSubgraphComponents = 0;
         int currentSubgraphEdges = 0;
 
-        Component currentComponent = new Component(startComponent.id, startComponent.resource, startComponent.density);
-        components.add(currentComponent);
+        Component currentSubComponent = new Component(currentSubgraphComponents, currentSysComponent.resource, currentSysComponent.density);
+        components.add(currentSubComponent);
         currentSubgraphComponents += 1;
 
-        for (Edge e : startComponent.edges){
-            availableEdgeIDs.add(e.getId());
-        }
+        currentNeighborEdges = currentSysComponent.edges;
 
-        while (currentSubgraphComponents != componentNumber && !availableEdgeIDs.isEmpty()){
-            int randomEdgeIndex = random.nextInt(availableEdgeIDs.size());
-            Iterator<Integer> it = availableEdgeIDs.iterator();
-            for (int i = 0; i < randomEdgeIndex; i++){
-                it.next();
-            }
-            Edge randomEdge = systemGraph.getEdge(it.next());
-            
-            if (visitedComponents.contains(randomEdge.getComponentA().id)){
-                for (Edge e : randomEdge.getComponentB().edges){
-                    availableEdgeIDs.add(e.getId());
-                }
-                Component newComponent = new Component(randomEdge.getComponentB().id, randomEdge.getComponentB().getResource(), randomEdge.getComponentB().getDensity());
-                components.add(newComponent);
-                visitedComponents.add(randomEdge.getComponentB().id);
-                Edge newEdge;
-                for (Component c : components){
-                    if (c.id == randomEdge.getComponentA().id){
-                        newEdge = new Edge(randomEdge.id, c, newComponent, randomEdge.delay);
-                        edges.add(newEdge);
-                        break;
-                    }
+        outerloop:
+        while (currentSubgraphComponents != componentNumber && currentNeighborEdges.isEmpty() == false){
+            Edge randomEdge = null;
+            for(Edge e : currentNeighborEdges){
+                if (visitedComponents.contains(e.getOtherComponent(currentSysComponent).id) == false){
+                    randomEdge = e;
+                    break;
                 }
             }
-            else{
-                for (Edge e : randomEdge.getComponentA().edges){
-                    availableEdgeIDs.add(e.getId());
-                }
-                Component newComponent = new Component(randomEdge.getComponentA().id, randomEdge.getComponentA().getResource(), randomEdge.getComponentA().getDensity());
-                components.add(newComponent);
-                visitedComponents.add(randomEdge.getComponentA().id);
-                Edge newEdge;
-                for (Component c : components){
-                    if (c.id == randomEdge.getComponentB().id){
-                        newEdge = new Edge(randomEdge.id, c, newComponent, randomEdge.delay);
-                        edges.add(newEdge);
-                        break;
-                    }
-                }
 
+            if(randomEdge == null){
+                break outerloop;
             }
+
+            visitedComponents.add(randomEdge.getOtherComponent(currentSysComponent).id);
+            Component newSubComponent = new Component(currentSubgraphComponents, randomEdge.getOtherComponent(currentSysComponent).resource, randomEdge.getOtherComponent(currentSysComponent).density);
+            components.add(newSubComponent);
+
+
+            Edge newSubEdge = new Edge(currentSubgraphEdges, currentSubComponent, newSubComponent, randomEdge.getDelay());
+            edges.add(newSubEdge);
             currentSubgraphComponents += 1;
             currentSubgraphEdges += 1;
-            Integer toRemove = randomEdge.id;
-            availableEdgeIDs.remove(toRemove);
+
+            currentSubComponent = newSubComponent;
+            currentSysComponent = randomEdge.getOtherComponent(currentSubComponent);
+            currentNeighborEdges = currentSysComponent.edges;
+
         }
 
         Component[] c = components.toArray(new Component[0]);
@@ -181,15 +147,49 @@ public class GenerateRandom {
 
     public static void main(String[] args) {
         // generates a fully connected graph with 5 vertices
-        Get2Dconnection get = new Get2Dconnection();
 
-        Graph g = GenerateRandom.generateRandomGraph(5, 4);
-        System.out.println("number of components: " + g.components.length);
+        Graph sysG = GenerateRandom.generateRandomGraph(200000, 900000);
+        System.out.println("number of components: " + sysG.components.length);
+        System.out.println("number of connections: " + sysG.edges.length);
+        HashMap<Integer, Integer>[] aL = AdjacencyList.generateAdjacencyList(sysG);
+
+        Graph subG = GenerateRandom.generateRandomSubgraph(sysG, 10, 10);
+        System.out.println("number of components: " + subG.components.length);
+        System.out.println("number of connections: " + subG.edges.length);
+        HashMap<Integer, Integer>[] alSub = AdjacencyList.generateAdjacencyList(subG);
+
+        //SwingUtilities.invokeLater(() -> new GraphVisualizationBig(gg, subG));
+        /*
+        SwingUtilities.invokeLater(() -> new GraphVisualizationSmall(twoD, gg, subG));
+        SwingUtilities.invokeLater(() -> new GraphVisualizationSmall(subTwoD, subG, new Graph(new Component[0], new Edge[0])));
+
+         */
+        /*
         for(int i = 0; i < g.components.length; i++){
             List<Edge> e = g.components[i].edges;
             System.out.println(e);
         }
+         */
+
+
+        /*
+        Component[] components = new Component[100000];
+        Edge[] edges = new Edge[99999];
+        for(int i = 0; i < 100000; i++){
+            Component c = new Component(i, 2, 3);
+            components[i] = c;
+        }
+        int cNum = 0;
+        for(int j = 0; j < 99999; j++){
+            Edge e = new Edge(j, components[cNum], components[cNum+1], 10);
+            edges[j] = e;
+            cNum = cNum + 1;
+        }
+        Graph g = new Graph(components, edges);
         System.out.println("number of edges: " + g.edges.length);
+
+         */
+        /*
         int[][] r = get.getConnection(g);
         for (int i = 0; i < r.length; i++) {
             for (int j = 0; j < r[i].length; j++) {
@@ -217,6 +217,6 @@ public class GenerateRandom {
             System.out.println();
         }
 
-
+         */
     }
 }
