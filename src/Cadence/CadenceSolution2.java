@@ -223,22 +223,20 @@ public class CadenceSolution2 {
 
 	public static void main(String[] args) {
     	//int loop, int bigGComponentNum, int bigGEdgeNum, int targetGComponentNum, int targetGEdgeNum
-		CadenceSolution2.multiTest(1000, 1000, 999, 100, 99);
-		/*
-		 * CadenceSolution2 graphSolver = new CadenceSolution2();
-		 * Graph AGraph = GenerateRandom.generateRandomGraph(1000, 999);
-		 * Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, 10, 9);
-		 * 
-		 * List<Graph> matcher = graphSolver.findAllGraph(AGraph, Asmall);
-		 * //Graph.printGraph(Asmall);
-		 * System.out.println("Number of Match: " + matcher.size());
-		 * System.out.println("Runtime in ms: " + graphSolver.getLastRunTime());
-		 * for(Graph g: matcher) {
-		 * System.out.println("isMatch: " + Asmall.equals(g));
-		 * //Graph.printGraph(g);
-		 * System.out.println("----");
-		 * }
-		 */
+		 CadenceSolution2.multiTest(1000, 1000, 999, 100, 99);
+//		 CadenceSolution2 graphSolver = new CadenceSolution2();
+//		 Graph AGraph = GenerateRandom.generateRandomGraph(1000, 999);
+//		 Graph Asmall = GenerateRandom.generateRandomSubgraph(AGraph, 100, 99);
+//		 
+//		 List<Graph> matcher = graphSolver.findAllGraph(AGraph, Asmall);
+//		 //Graph.printGraph(Asmall);
+//		 System.out.println("Number of Match: " + matcher.size());
+//		 System.out.println("Runtime in ms: " + graphSolver.getLastRunTime());
+//		 for(Graph g: matcher) {
+//		 System.out.println("isMatch: " + Asmall.equals(g));
+//		 //Graph.printGraph(g);
+//		 System.out.println("----");
+//}
 
 		// //build small graph
 		// System.out.println("Custom Graph");
