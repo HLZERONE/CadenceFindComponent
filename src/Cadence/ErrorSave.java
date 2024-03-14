@@ -46,7 +46,7 @@ public class ErrorSave {
         }
 
         public static void main(String[] args) {
-                SaveErrorGraphToFile(10000, 1000, 999, 10, 9);
+                SaveErrorGraphToFile(10000, 10000, 9999, 1000, 999);
 
                 // CadenceSolution2 graphSolver = new CadenceSolution2();
                 // Graph AGraph = GenerateRandom.generateRandomGraph(1000, 999);

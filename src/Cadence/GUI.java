@@ -159,10 +159,10 @@ public class GUI {
                                 // matcher.get(0));
                                 // graphVisualization2.setVisible(true);
 
-                                // GraphVisualizationSmall graphVisualizationSmall = new
-                                // GraphVisualizationSmall(Get2Dconnection.getConnection(systemGraph),
-                                // systemGraph, queryGraph);
-                                // graphVisualizationSmall.setVisible(true);
+                                GraphVisualizationSmall graphVisualizationSmall = new
+                                GraphVisualizationSmall(Get2Dconnection.getConnection(systemGraph),
+                                systemGraph, queryGraph);
+                                graphVisualizationSmall.setVisible(true);
                         } catch (Exception ex) {
                                 ex.printStackTrace();
                         }
