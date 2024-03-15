@@ -7,6 +7,7 @@ import java.io.File;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -40,6 +41,9 @@ public class GUI {
     int numSystemEdges = 20;
     int numQueryComponents = 4;
     int numQueryEdges = 4;
+
+    private JCheckBox saveGraph;
+    boolean saveGraphToFile = false;
 
     public GUI() {
         initializeGUI();
@@ -143,6 +147,8 @@ public class GUI {
         JLabel label4 = new JLabel("Number of query graph edges");
         queryEdge = new JTextField("4", 19);
 
+        saveGraph = new JCheckBox("Save generated graph to file");
+
         generateRandomGraphField.add(label0);
         generateRandomGraphField.add(label1);
         generateRandomGraphField.add(sysComp);
@@ -152,6 +158,8 @@ public class GUI {
         generateRandomGraphField.add(queryComp);
         generateRandomGraphField.add(label4);
         generateRandomGraphField.add(queryEdge);
+
+        generateRandomGraphField.add(saveGraph);
 
         frame.add(generateRandomGraphField);
         generateRandomGraphField.setVisible(false);
@@ -181,6 +189,9 @@ public class GUI {
                 numQueryEdges = Integer.parseInt(queryEdge.getText());
                 systemGraph = GenerateRandom.generateRandomGraph(numSystemComponents, numSystemEdges);
                 queryGraph = GenerateRandom.generateRandomSubgraph(systemGraph, numQueryComponents, numQueryEdges);
+                if (saveGraph.isSelected()) {
+                    GraphParserJSON.combineGraphsToJsonFile(systemGraph, queryGraph, "output\\GeneratedGraph.json");
+                }
             }
 
             CadenceSolution2 graphSolver = new CadenceSolution2();

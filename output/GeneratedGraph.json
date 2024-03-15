@@ -1,0 +1,270 @@
+{
+    "system": {"nodes": {
+        "0": {
+            "density": "2",
+            "resource": "3",
+            "edges": {
+                "0": {
+                    "edge_delay": "1000",
+                    "node_id": "1"
+                },
+                "11": {
+                    "edge_delay": "100",
+                    "node_id": "4"
+                },
+                "12": {
+                    "edge_delay": "10",
+                    "node_id": "5"
+                },
+                "13": {
+                    "edge_delay": "100",
+                    "node_id": "6"
+                },
+                "14": {
+                    "edge_delay": "10",
+                    "node_id": "7"
+                },
+                "15": {
+                    "edge_delay": "10",
+                    "node_id": "8"
+                },
+                "16": {
+                    "edge_delay": "100",
+                    "node_id": "9"
+                },
+                "9": {
+                    "edge_delay": "1000",
+                    "node_id": "2"
+                },
+                "10": {
+                    "edge_delay": "100",
+                    "node_id": "3"
+                }
+            }
+        },
+        "1": {
+            "density": "3",
+            "resource": "8",
+            "edges": {
+                "0": {
+                    "edge_delay": "1000",
+                    "node_id": "0"
+                },
+                "1": {
+                    "edge_delay": "10",
+                    "node_id": "2"
+                },
+                "17": {
+                    "edge_delay": "100",
+                    "node_id": "3"
+                },
+                "18": {
+                    "edge_delay": "1000",
+                    "node_id": "4"
+                },
+                "19": {
+                    "edge_delay": "1000",
+                    "node_id": "5"
+                }
+            }
+        },
+        "2": {
+            "density": "9",
+            "resource": "2",
+            "edges": {
+                "1": {
+                    "edge_delay": "10",
+                    "node_id": "1"
+                },
+                "2": {
+                    "edge_delay": "10",
+                    "node_id": "3"
+                },
+                "9": {
+                    "edge_delay": "1000",
+                    "node_id": "0"
+                }
+            }
+        },
+        "3": {
+            "density": "5",
+            "resource": "5",
+            "edges": {
+                "2": {
+                    "edge_delay": "10",
+                    "node_id": "2"
+                },
+                "3": {
+                    "edge_delay": "1000",
+                    "node_id": "4"
+                },
+                "17": {
+                    "edge_delay": "100",
+                    "node_id": "1"
+                },
+                "10": {
+                    "edge_delay": "100",
+                    "node_id": "0"
+                }
+            }
+        },
+        "4": {
+            "density": "4",
+            "resource": "4",
+            "edges": {
+                "11": {
+                    "edge_delay": "100",
+                    "node_id": "0"
+                },
+                "3": {
+                    "edge_delay": "1000",
+                    "node_id": "3"
+                },
+                "4": {
+                    "edge_delay": "10",
+                    "node_id": "5"
+                },
+                "18": {
+                    "edge_delay": "1000",
+                    "node_id": "1"
+                }
+            }
+        },
+        "5": {
+            "density": "12",
+            "resource": "6",
+            "edges": {
+                "12": {
+                    "edge_delay": "10",
+                    "node_id": "0"
+                },
+                "4": {
+                    "edge_delay": "10",
+                    "node_id": "4"
+                },
+                "5": {
+                    "edge_delay": "1000",
+                    "node_id": "6"
+                },
+                "19": {
+                    "edge_delay": "1000",
+                    "node_id": "1"
+                }
+            }
+        },
+        "6": {
+            "density": "15",
+            "resource": "3",
+            "edges": {
+                "13": {
+                    "edge_delay": "100",
+                    "node_id": "0"
+                },
+                "5": {
+                    "edge_delay": "1000",
+                    "node_id": "5"
+                },
+                "6": {
+                    "edge_delay": "10",
+                    "node_id": "7"
+                }
+            }
+        },
+        "7": {
+            "density": "14",
+            "resource": "2",
+            "edges": {
+                "14": {
+                    "edge_delay": "10",
+                    "node_id": "0"
+                },
+                "6": {
+                    "edge_delay": "10",
+                    "node_id": "6"
+                },
+                "7": {
+                    "edge_delay": "10",
+                    "node_id": "8"
+                }
+            }
+        },
+        "8": {
+            "density": "1",
+            "resource": "5",
+            "edges": {
+                "15": {
+                    "edge_delay": "10",
+                    "node_id": "0"
+                },
+                "7": {
+                    "edge_delay": "10",
+                    "node_id": "7"
+                },
+                "8": {
+                    "edge_delay": "10",
+                    "node_id": "9"
+                }
+            }
+        },
+        "9": {
+            "density": "6",
+            "resource": "6",
+            "edges": {
+                "16": {
+                    "edge_delay": "100",
+                    "node_id": "0"
+                },
+                "8": {
+                    "edge_delay": "10",
+                    "node_id": "8"
+                }
+            }
+        }
+    }},
+    "query": {"nodes": {
+        "0": {
+            "density": "14",
+            "resource": "2",
+            "edges": {"0": {
+                "edge_delay": "10",
+                "node_id": "1"
+            }}
+        },
+        "1": {
+            "density": "15",
+            "resource": "3",
+            "edges": {
+                "0": {
+                    "edge_delay": "10",
+                    "node_id": "0"
+                },
+                "1": {
+                    "edge_delay": "1000",
+                    "node_id": "2"
+                }
+            }
+        },
+        "2": {
+            "density": "12",
+            "resource": "6",
+            "edges": {
+                "1": {
+                    "edge_delay": "1000",
+                    "node_id": "1"
+                },
+                "2": {
+                    "edge_delay": "10",
+                    "node_id": "3"
+                }
+            }
+        },
+        "3": {
+            "density": "4",
+            "resource": "4",
+            "edges": {"2": {
+                "edge_delay": "10",
+                "node_id": "2"
+            }}
+        }
+    }}
+}
