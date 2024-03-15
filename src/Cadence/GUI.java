@@ -137,7 +137,7 @@ public class GUI {
         JLabel label1 = new JLabel("Number of system graph components");
         sysComp = new JTextField("10", 19);
         JLabel label2 = new JLabel("Number of system graph edges");
-        sysEdge = new JTextField("20",19);
+        sysEdge = new JTextField("20", 19);
         JLabel label3 = new JLabel("Number of query graph components");
         queryComp = new JTextField("4", 19);
         JLabel label4 = new JLabel("Number of query graph edges");
@@ -152,9 +152,9 @@ public class GUI {
         generateRandomGraphField.add(queryComp);
         generateRandomGraphField.add(label4);
         generateRandomGraphField.add(queryEdge);
-    
+
         frame.add(generateRandomGraphField);
-        generateRandomGraphField.setVisible(false);        
+        generateRandomGraphField.setVisible(false);
     }
 
     private void executeGraphProcessing() {
@@ -175,6 +175,10 @@ public class GUI {
                 systemGraph = GraphParserJSON.buildSystemGraph(selectedFile.getAbsolutePath());
                 queryGraph = GraphParserJSON.buildQueryGraph(selectedFile.getAbsolutePath());
             } else if ("Generate Random Graph".equals(selectedOption)) {
+                numSystemComponents = Integer.parseInt(sysComp.getText());
+                numSystemEdges = Integer.parseInt(sysEdge.getText());
+                numQueryComponents = Integer.parseInt(queryComp.getText());
+                numQueryEdges = Integer.parseInt(queryEdge.getText());
                 systemGraph = GenerateRandom.generateRandomGraph(numSystemComponents, numSystemEdges);
                 queryGraph = GenerateRandom.generateRandomSubgraph(systemGraph, numQueryComponents, numQueryEdges);
             }
